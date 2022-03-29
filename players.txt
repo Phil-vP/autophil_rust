@@ -1,0 +1,18 @@
+# <Name> - <SR Tank> - <SR DPS> - <SR Support> - <Roles>
+Player 1 - 2413 - 2846 - 2508 - ts
+Player 2 - 1919 - 2158 - 1919 - d
+Player 3 - 1561 - 2115 - 1961 - d
+Player 4 - 2360 - 2399 - 2303 - t
+Player 5 - 1781 - 2012 - 2157 - t
+Player 6 - 2259 - 2650 - 2794 - s
+# Player 7 - 2555 - 2868 - 2556 - t
+# Player 8 - 2205 - 2219 - 2293 - ts
+# Player 9 - 1573 - 1876 - 1898 - td
+# Player 10 - 2604 - 3121 - 2557 - s
+# Player 11 - 2839 - 2717 - 2344 - t
+# Player 12 - 1532 - 1575 - 1658 - d
+# Player 13 - 2205 - 2510 - 1972 - s
+# Player 14 - 2622 - 2733 - 2707 - td
+# Player 15 - 1989 - 2095 - 2133 - s
+# Player 16 - 2375 - 2260 - 2308 - ts
+# Player 17 - 1936 - 2049 - 2158 - ts
