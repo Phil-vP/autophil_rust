@@ -16,7 +16,7 @@ pub struct Player {
 impl Player {
     pub fn new(player_string: String) -> Result<Player> {
         let split: Vec<&str> = player_string.split(" - ").collect();
-        if split.len() != 5 {
+        if split.len() < 5 {
             println!(
                 "Splitting Error with the following String: {}",
                 player_string
@@ -78,4 +78,5 @@ impl Player {
         s.push_str(&format!("plays_support: {}\n", &self.plays_support));
         s
     }
+
 }

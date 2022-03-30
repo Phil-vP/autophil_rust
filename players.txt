@@ -1,18 +1,22 @@
-# <Name> - <SR Tank> - <SR DPS> - <SR Support> - <Roles>
-Player 1 - 2413 - 2846 - 2508 - ts
-Player 2 - 1919 - 2158 - 1919 - d
-Player 3 - 1561 - 2115 - 1961 - d
-Player 4 - 2360 - 2399 - 2303 - t
-Player 5 - 1781 - 2012 - 2157 - t
-Player 6 - 2259 - 2650 - 2794 - s
-# Player 7 - 2555 - 2868 - 2556 - t
-# Player 8 - 2205 - 2219 - 2293 - ts
-# Player 9 - 1573 - 1876 - 1898 - td
-# Player 10 - 2604 - 3121 - 2557 - s
-# Player 11 - 2839 - 2717 - 2344 - t
-# Player 12 - 1532 - 1575 - 1658 - d
-# Player 13 - 2205 - 2510 - 1972 - s
-# Player 14 - 2622 - 2733 - 2707 - td
-# Player 15 - 1989 - 2095 - 2133 - s
-# Player 16 - 2375 - 2260 - 2308 - ts
-# Player 17 - 1936 - 2049 - 2158 - ts
+# Tank
+PhilvP - 2127 - 1800 - 2200 - t
+freaker - 2400 - 2300 - 2100 - t
+# DPS
+SharkyShark - 2055 - 2173 - 2379 - d
+# Support
+Altofox - 2200 - 2100 - 2500 - s
+Juun - 2100 - 1100 - 2200 - s
+Luhcy - 0 - 0 - 2300 - s
+Strawie - 0 - 0 - 2000 - s
+MPSenpai - 1956 - 1941 - 2200 - s
+# Flex
+Fool - 1700 - 1700 - 1700 - tds
+doushte - 1347 - 1880 - 1975 - tds
+michealw - 3224 - 3260 - 3450 - tds
+taadels - 3900 - 3600 - 3600 - tds
+DominiC - 2525 - 2375 - 2930 - tds
+Stormeair - 2200 - 2452 - 2750 - tds
+HiddenSquid - 1600 - 1400 - 1400 - tds
+TrixCold - 3300 - 3300 - 3000 - tds
+LazaC - 2900 - 2400 - 2900 - tds
+DragonEyes - 2424 - 1900 - 2500 - ds
