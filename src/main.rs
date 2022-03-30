@@ -33,7 +33,7 @@ fn main() {
         matchups.len()
     );
 
-    let teams = create_scrims(&matchups);
+    // let teams = create_scrims(&matchups);
 
     
     /*
@@ -94,25 +94,32 @@ fn create_scrims(matchups: &Vec<Vec<&(&Player, &Player)>>) -> Vec<Matchup> {
     scrims
 }
 
-fn create_matchups(players: &Vec<Player>) -> Vec<Vec<&(&Player, &Player)>> {
+fn create_matchups(players: &Vec<Player>) -> Vec<Vec<&Vec<&&Player>>> {
 
-    let mut all_matchups: Vec<Vec<&(&Player, &Player)>> = Vec::new();
+    let mut all_matchups: Vec<Vec<&Vec<&&Player>>> = Vec::new();
 
     let number_of_teams: i16 = players.len() as i16 / 6;
 
     let position_vec = vec![Position::Tank, Position::Damage, Position::Support];
 
-    let mut pair_map: HashMap<Position, Vec<(&Player, &Player)>> = HashMap::new();
+    let mut pair_map: HashMap<Position, Vec<Vec<&&Player>>> = HashMap::new();
+    //                                  |   +------------+|
+    //                                  |   | Role Duos  ||
+    //                                  |   +------------+|
+    //                                  +-----------------+
+    //                                  | All Duos        |
+    //                                  +-----------------+
+
 
     for position in position_vec.clone() {
         let role_list: Vec<&Player> = players
             .iter()
             .filter(|player| player.plays_position(position))
             .collect();
-        let tuples: Vec<(&Player, &Player)> = role_list
+        let tuples: Vec<Vec<&&Player>> = role_list
             .iter()
             .combinations(2)
-            .map(|pair| (*pair[0], *pair[1]))
+            .map(|pair| vec![pair[0], pair[1]])
             .collect();
         pair_map.insert(position, tuples);
     }
@@ -127,7 +134,16 @@ fn create_matchups(players: &Vec<Player>) -> Vec<Vec<&(&Player, &Player)>> {
 
     println!("Number of teams: {}", number_of_teams);
 
-    let mut combination_map: HashMap<Position, Vec<Vec<&(&Player, &Player)>>> = HashMap::new();
+    let mut combination_map: HashMap<Position, Vec<Vec<&Vec<&&Player>>>> = HashMap::new();
+    //                                         |   |   +------------+||
+    //                                         |   |   | Role Duos  |||
+    //                                         |   |   +------------+||
+    //                                         |   +-----------------+|
+    //                                         |   | Duo Combination ||
+    //                                         |   +-----------------+|
+    //                                         +----------------------+
+    //                                         |  All combinations    |
+    //                                         +----------------------+
 
     for position in position_vec.clone() {
         let combinations_crowded = pair_map[&position]
@@ -138,13 +154,15 @@ fn create_matchups(players: &Vec<Player>) -> Vec<Vec<&(&Player, &Player)>> {
         let combinations_clean = combinations_crowded.filter(|c| {
             let mut player_names: Vec<String> = Vec::new();
             for player in c {
-                player_names.push(player.0.name.clone());
-                player_names.push(player.1.name.clone());
+                player_names.push(player[0].name.clone());
+                player_names.push(player[1].name.clone());
             }
             player_names.iter().unique().count() == player_names.len()
         });
 
-        combination_map.insert(position, combinations_clean.collect());
+        let clean_combinations: Vec<Vec<&Vec<&&Player>>> = combinations_clean.collect();
+
+        combination_map.insert(position, clean_combinations);
         println!("{} of those are unique\n", combination_map[&position].len());
     }
 
@@ -153,14 +171,14 @@ fn create_matchups(players: &Vec<Player>) -> Vec<Vec<&(&Player, &Player)>> {
 
     let tank_progress_bar = ProgressBar::new(number_of_tank_combinations as u64);
 
-    let mut all_dps_supp_combinations: Vec<Vec<&(&Player, &Player)>> = Vec::new();
+    let mut all_dps_supp_combinations: Vec<Vec<&Vec<&&Player>>> = Vec::new();
 
     // First calculating all possible Damage & Support pairings
     'damage_outer_loop: for damage_pairs_this_matchup in combination_map[&Position::Damage].clone() {
         let mut dps_players_seen_this_run: Vec<String> = Vec::new();
         for dps_duo in &damage_pairs_this_matchup {
-            dps_players_seen_this_run.push(dps_duo.0.name.clone());
-            dps_players_seen_this_run.push(dps_duo.1.name.clone());
+            dps_players_seen_this_run.push(dps_duo[0].name.clone());
+            dps_players_seen_this_run.push(dps_duo[1].name.clone());
         }
         println!("DPS Players this run: {:?}", dps_players_seen_this_run);
         // Check if all names are unique
@@ -171,8 +189,8 @@ fn create_matchups(players: &Vec<Player>) -> Vec<Vec<&(&Player, &Player)>> {
         'support_inner_loop: for support_pairs_this_matchup in combination_map[&Position::Support].clone() {
             let mut dps_and_support_players_seen_this_run = dps_players_seen_this_run.clone();
             for support_duo in &support_pairs_this_matchup {
-                dps_and_support_players_seen_this_run.push(support_duo.0.name.clone());
-                dps_and_support_players_seen_this_run.push(support_duo.1.name.clone());
+                dps_and_support_players_seen_this_run.push(support_duo[0].name.clone());
+                dps_and_support_players_seen_this_run.push(support_duo[1].name.clone());
             }
             println!("    DPS and Support Players this run: {:?}", dps_and_support_players_seen_this_run);
             // Check if all names are unique
@@ -182,9 +200,9 @@ fn create_matchups(players: &Vec<Player>) -> Vec<Vec<&(&Player, &Player)>> {
             }
 
             // Looks like a possible tank / support matchup has been found, it can now be created and appended to the list of all combinations
-            let mut dps_supp_combination: Vec<&(&Player, &Player)> = Vec::new();
-            dps_supp_combination.extend(&damage_pairs_this_matchup);
-            dps_supp_combination.extend(&support_pairs_this_matchup);
+            let mut dps_supp_combination: Vec<&Vec<&&Player>> = Vec::new();
+            dps_supp_combination.extend(damage_pairs_this_matchup.clone());
+            dps_supp_combination.extend(support_pairs_this_matchup.clone());
             println!("    Success");
             // for duo in &dps_supp_combination {
             //     println!("({}, {})", duo.0.name, duo.1.name);
@@ -200,15 +218,15 @@ fn create_matchups(players: &Vec<Player>) -> Vec<Vec<&(&Player, &Player)>> {
         tank_progress_bar.inc(1);
         let mut tank_names:Vec<String> = Vec::new();
         for pair in tank_pairs_in_this_matchup {
-            tank_names.push(pair.0.name.clone());
-            tank_names.push(pair.1.name.clone());
+            tank_names.push(pair[0].name.clone());
+            tank_names.push(pair[1].name.clone());
         }
 
         'dps_support_loop: for dps_support_pairs in &all_dps_supp_combinations {
             let mut names_in_this_matchup = tank_names.clone();
             for pair in dps_support_pairs {
-                names_in_this_matchup.push(pair.0.name.clone());
-                names_in_this_matchup.push(pair.1.name.clone());
+                names_in_this_matchup.push(pair[0].name.clone());
+                names_in_this_matchup.push(pair[1].name.clone());
             }
 
             // Check if any names are double
@@ -218,11 +236,11 @@ fn create_matchups(players: &Vec<Player>) -> Vec<Vec<&(&Player, &Player)>> {
 
             println!("Found matchup: {:?}", names_in_this_matchup);
 
-            let mut full_matchup: Vec<&(&Player, &Player)> = tank_pairs_in_this_matchup.clone();
+            let mut full_matchup: Vec<&Vec<&&Player>> = tank_pairs_in_this_matchup.clone();
             full_matchup.extend(dps_support_pairs);
             println!("Matchup found with length {}:" , full_matchup.len());
             for duo in &full_matchup {
-                println!("({}, {})", duo.0.name, duo.1.name);
+                println!("({}, {})", duo[0].name, duo[1].name);
             }
 
             // No names are double, this is a possibly valid matchup
