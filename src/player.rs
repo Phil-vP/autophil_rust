@@ -78,5 +78,4 @@ impl Player {
         s.push_str(&format!("plays_support: {}\n", &self.plays_support));
         s
     }
-
 }

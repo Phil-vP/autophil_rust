@@ -5,18 +5,18 @@ freaker - 2400 - 2300 - 2100 - t
 SharkyShark - 2055 - 2173 - 2379 - d
 # Support
 Altofox - 2200 - 2100 - 2500 - s
-Juun - 2100 - 1100 - 2200 - s
-Luhcy - 0 - 0 - 2300 - s
-Strawie - 0 - 0 - 2000 - s
-MPSenpai - 1956 - 1941 - 2200 - s
+# Juun - 2100 - 1100 - 2200 - s
+# Luhcy - 0 - 0 - 2300 - s
+# Strawie - 0 - 0 - 2000 - s
+# MPSenpai - 1956 - 1941 - 2200 - s
 # Flex
-Fool - 1700 - 1700 - 1700 - tds
-doushte - 1347 - 1880 - 1975 - tds
-michealw - 3224 - 3260 - 3450 - tds
-taadels - 3900 - 3600 - 3600 - tds
-DominiC - 2525 - 2375 - 2930 - tds
-Stormeair - 2200 - 2452 - 2750 - tds
-HiddenSquid - 1600 - 1400 - 1400 - tds
-TrixCold - 3300 - 3300 - 3000 - tds
-LazaC - 2900 - 2400 - 2900 - tds
-DragonEyes - 2424 - 1900 - 2500 - ds
+# Fool - 1700 - 1700 - 1700 - d
+doushte - 1347 - 1880 - 1975 - ds
+michealw - 3224 - 3260 - 3450 - ds
+# taadels - 3900 - 3600 - 3600 - t
+# DominiC - 2525 - 2375 - 2930 - t
+# Stormeair - 2200 - 2452 - 2750 - tds
+# HiddenSquid - 1600 - 1400 - 1400 - tds
+# TrixCold - 3300 - 3300 - 3000 - tds
+# LazaC - 2900 - 2400 - 2900 - tds
+# DragonEyes - 2424 - 1900 - 2500 - ds

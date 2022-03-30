@@ -1,12 +1,10 @@
 use crate::Team;
 
-
 #[derive(Debug, Clone, PartialEq)]
 pub enum MatchupKind {
     TwoWayScrim,
-    ThreeWayScrim
+    ThreeWayScrim,
 }
-
 
 #[derive(Debug, Clone, PartialEq)]
 pub struct Matchup {
@@ -14,7 +12,7 @@ pub struct Matchup {
     teams: Vec<Team>,
     sr_average: f32,
     sr_diff: f32,
-    rating: i16
+    rating: i16,
 }
 
 impl Matchup {
@@ -42,7 +40,7 @@ impl Matchup {
             teams,
             sr_average,
             sr_diff,
-            rating
+            rating,
         }
     }
 
@@ -53,7 +51,7 @@ impl Matchup {
         println!("Difference to Average: {}", self.sr_diff);
         println!("Rating: {}", self.rating);
         println!("\n");
-        
+
         let mut team_names = String::new();
         let mut tank_line_1 = String::new();
         let mut tank_line_2 = String::new();
@@ -64,12 +62,78 @@ impl Matchup {
 
         for team in self.teams.clone() {
             team_names.push_str(&format!("{: <15}", &team.name));
-            tank_line_1.push_str(&format!("{: <15}", [&team.tank_1.clone().unwrap().name, ": ", &team.tank_1.unwrap().tank_sr.to_string()].join("")).as_str());
-            tank_line_2.push_str(&format!("{: <15}", [&team.tank_2.clone().unwrap().name, ": ", &team.tank_2.unwrap().tank_sr.to_string()].join("")).as_str());
-            damage_line_1.push_str(&format!("{: <15}", [&team.damage_1.clone().unwrap().name, ": ", &team.damage_1.unwrap().damage_sr.to_string()].join("")).as_str());
-            damage_line_2.push_str(&format!("{: <15}", [&team.damage_2.clone().unwrap().name, ": ", &team.damage_2.unwrap().damage_sr.to_string()].join("")).as_str());
-            support_line_1.push_str(&format!("{: <15}", [&team.support_1.clone().unwrap().name, ": ", &team.support_1.unwrap().support_sr.to_string()].join("")).as_str());
-            support_line_2.push_str(&format!("{: <15}", [&team.support_2.clone().unwrap().name, ": ", &team.support_2.unwrap().support_sr.to_string()].join("")).as_str());
+            tank_line_1.push_str(
+                &format!(
+                    "{: <15}",
+                    [
+                        &team.tank_1.clone().unwrap().name,
+                        ": ",
+                        &team.tank_1.unwrap().tank_sr.to_string()
+                    ]
+                    .join("")
+                )
+                .as_str(),
+            );
+            tank_line_2.push_str(
+                &format!(
+                    "{: <15}",
+                    [
+                        &team.tank_2.clone().unwrap().name,
+                        ": ",
+                        &team.tank_2.unwrap().tank_sr.to_string()
+                    ]
+                    .join("")
+                )
+                .as_str(),
+            );
+            damage_line_1.push_str(
+                &format!(
+                    "{: <15}",
+                    [
+                        &team.damage_1.clone().unwrap().name,
+                        ": ",
+                        &team.damage_1.unwrap().damage_sr.to_string()
+                    ]
+                    .join("")
+                )
+                .as_str(),
+            );
+            damage_line_2.push_str(
+                &format!(
+                    "{: <15}",
+                    [
+                        &team.damage_2.clone().unwrap().name,
+                        ": ",
+                        &team.damage_2.unwrap().damage_sr.to_string()
+                    ]
+                    .join("")
+                )
+                .as_str(),
+            );
+            support_line_1.push_str(
+                &format!(
+                    "{: <15}",
+                    [
+                        &team.support_1.clone().unwrap().name,
+                        ": ",
+                        &team.support_1.unwrap().support_sr.to_string()
+                    ]
+                    .join("")
+                )
+                .as_str(),
+            );
+            support_line_2.push_str(
+                &format!(
+                    "{: <15}",
+                    [
+                        &team.support_2.clone().unwrap().name,
+                        ": ",
+                        &team.support_2.unwrap().support_sr.to_string()
+                    ]
+                    .join("")
+                )
+                .as_str(),
+            );
         }
     }
 }
