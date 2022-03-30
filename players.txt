@@ -13,7 +13,7 @@ Altofox - 2200 - 2100 - 2500 - s
 # Fool - 1700 - 1700 - 1700 - d
 doushte - 1347 - 1880 - 1975 - ds
 michealw - 3224 - 3260 - 3450 - ds
-# taadels - 3900 - 3600 - 3600 - t
+taadels - 3900 - 3600 - 3600 - ds
 # DominiC - 2525 - 2375 - 2930 - t
 # Stormeair - 2200 - 2452 - 2750 - tds
 # HiddenSquid - 1600 - 1400 - 1400 - tds
