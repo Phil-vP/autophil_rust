@@ -1,0 +1,140 @@
+-------------------------------------
+Matchup
+Average SR: 2398.0557
+Difference to Average: 6.222412
+Rating: 640
+
+Naughty Tomatoes         Team 2                   Team 3                   
+freaker: 2400            DominiC: 2525            TrixCold: 3300           
+PhilvP: 2127             Stormeair: 2200          LazaC: 2900              
+taadels: 3600            michealw: 3260           Fool: 1700               
+doushte: 1880            HiddenSquid: 1400        SharkyShark: 2173        
+Juun: 2200               DragonEyes: 2500         Strawie: 2000            
+MPSenpai: 2200           Altofox: 2500            Luhcy: 2300              
+-------------------------------------
+-------------------------------------
+Matchup
+Average SR: 2362.7224
+Difference to Average: 26.11084
+Rating: 731
+
+Naughty Tomatoes         Team 2                   Team 3                   
+freaker: 2400            michealw: 3224           Stormeair: 2200          
+DominiC: 2525            LazaC: 2900              PhilvP: 2127             
+TrixCold: 3300           Fool: 1700               taadels: 3600            
+SharkyShark: 2173        doushte: 1880            DragonEyes: 1900         
+HiddenSquid: 1400        Strawie: 2000            Juun: 2200               
+Luhcy: 2300              Altofox: 2500            MPSenpai: 2200           
+-------------------------------------
+-------------------------------------
+Matchup
+Average SR: 2362.7224
+Difference to Average: 24.11084
+Rating: 814
+
+Naughty Tomatoes         Team 2                   Team 3                   
+freaker: 2400            DominiC: 2525            Stormeair: 2200          
+michealw: 3224           TrixCold: 3300           PhilvP: 2127             
+Fool: 1700               SharkyShark: 2173        taadels: 3600            
+doushte: 1880            HiddenSquid: 1400        DragonEyes: 1900         
+LazaC: 2900              Luhcy: 2300              Juun: 2200               
+Strawie: 2000            Altofox: 2500            MPSenpai: 2200           
+-------------------------------------
+-------------------------------------
+Matchup
+Average SR: 2362.722
+Difference to Average: 17.44458
+Rating: 859
+
+Naughty Tomatoes         Team 2                   Team 3                   
+freaker: 2400            DominiC: 2525            Stormeair: 2200          
+michealw: 3224           TrixCold: 3300           PhilvP: 2127             
+Fool: 1700               SharkyShark: 2173        taadels: 3600            
+DragonEyes: 1900         HiddenSquid: 1400        doushte: 1880            
+LazaC: 2900              Luhcy: 2300              Juun: 2200               
+Strawie: 2000            Altofox: 2500            MPSenpai: 2200           
+-------------------------------------
+-------------------------------------
+Matchup
+Average SR: 2362.7224
+Difference to Average: 26.11084
+Rating: 967
+
+Naughty Tomatoes         Team 2                   Team 3                   
+freaker: 2400            michealw: 3224           Stormeair: 2200          
+DominiC: 2525            LazaC: 2900              PhilvP: 2127             
+TrixCold: 3300           Fool: 1700               taadels: 3600            
+SharkyShark: 2173        DragonEyes: 1900         doushte: 1880            
+HiddenSquid: 1400        Strawie: 2000            Juun: 2200               
+Luhcy: 2300              Altofox: 2500            MPSenpai: 2200           
+-------------------------------------
+-------------------------------------
+Matchup
+Average SR: 2386.389
+Difference to Average: 29.555664
+Rating: 1082
+
+Naughty Tomatoes         Team 2                   Team 3                   
+freaker: 2400            DominiC: 2525            LazaC: 2900              
+PhilvP: 2127             Stormeair: 2200          HiddenSquid: 1600        
+taadels: 3600            Fool: 1700               TrixCold: 3300           
+doushte: 1880            DragonEyes: 1900         SharkyShark: 2173        
+Juun: 2200               michealw: 3450           Strawie: 2000            
+MPSenpai: 2200           Altofox: 2500            Luhcy: 2300              
+-------------------------------------
+-------------------------------------
+Matchup
+Average SR: 2362.7224
+Difference to Average: 34.444336
+Rating: 1214
+
+Naughty Tomatoes         Team 2                   Team 3                   
+freaker: 2400            michealw: 3224           Stormeair: 2200          
+TrixCold: 3300           DominiC: 2525            PhilvP: 2127             
+SharkyShark: 2173        Fool: 1700               taadels: 3600            
+HiddenSquid: 1400        doushte: 1880            DragonEyes: 1900         
+Luhcy: 2300              LazaC: 2900              Juun: 2200               
+Altofox: 2500            Strawie: 2000            MPSenpai: 2200           
+-------------------------------------
+-------------------------------------
+Matchup
+Average SR: 2396.0557
+Difference to Average: 18.111084
+Rating: 1292
+
+Naughty Tomatoes         Team 2                   Team 3                   
+freaker: 2400            michealw: 3224           Stormeair: 2200          
+PhilvP: 2127             DominiC: 2525            LazaC: 2900              
+taadels: 3600            SharkyShark: 2173        Fool: 1700               
+doushte: 1880            HiddenSquid: 1400        TrixCold: 3300           
+Juun: 2200               DragonEyes: 2500         Strawie: 2000            
+MPSenpai: 2200           Altofox: 2500            Luhcy: 2300              
+-------------------------------------
+-------------------------------------
+Matchup
+Average SR: 2386.389
+Difference to Average: 21.111084
+Rating: 1300
+
+Naughty Tomatoes         Team 2                   Team 3                   
+freaker: 2400            DominiC: 2525            LazaC: 2900              
+PhilvP: 2127             Stormeair: 2200          HiddenSquid: 1600        
+taadels: 3600            Fool: 1700               TrixCold: 3300           
+DragonEyes: 1900         doushte: 1880            SharkyShark: 2173        
+Strawie: 2000            michealw: 3450           Juun: 2200               
+Luhcy: 2300              Altofox: 2500            MPSenpai: 2200           
+-------------------------------------
+-------------------------------------
+Matchup
+Average SR: 2386.389
+Difference to Average: 18.222168
+Rating: 1332
+
+Naughty Tomatoes         Team 2                   Team 3                   
+freaker: 2400            DominiC: 2525            LazaC: 2900              
+PhilvP: 2127             Stormeair: 2200          HiddenSquid: 1600        
+taadels: 3600            Fool: 1700               TrixCold: 3300           
+doushte: 1880            DragonEyes: 1900         SharkyShark: 2173        
+Strawie: 2000            michealw: 3450           Juun: 2200               
+Luhcy: 2300              Altofox: 2500            MPSenpai: 2200           
+-------------------------------------

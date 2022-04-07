@@ -78,4 +78,18 @@ impl Player {
         s.push_str(&format!("plays_support: {}\n", &self.plays_support));
         s
     }
+
+    pub fn print_role(&self, position: Position) -> String {
+        match position {
+            Position::Tank => {
+                format!("{}: {}", self.name.clone(), self.tank_sr)
+            }
+            Position::Damage => {
+                format!("{}: {}", self.name.clone(), self.damage_sr)
+            }
+            Position::Support => {
+                format!("{}: {}", self.name.clone(), self.support_sr)
+            }
+        }
+    }
 }
