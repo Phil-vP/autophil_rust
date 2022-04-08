@@ -1,5 +1,5 @@
 use crate::Position;
-use anyhow::{anyhow, Error, Result};
+use anyhow::{anyhow, Result};
 use std::iter::Iterator;
 
 #[derive(Debug, Clone, PartialEq)]
@@ -23,7 +23,8 @@ impl Player {
             );
             return Err(anyhow!("Splitting Error"));
         }
-        let name = split[0].to_string();
+        let name = split[0][..3].to_string();
+        // let name = split[0].to_string();
         let tank_sr = split[1].parse::<i16>().unwrap();
         let damage_sr = split[2].parse::<i16>().unwrap();
         let support_sr = split[3].parse::<i16>().unwrap();

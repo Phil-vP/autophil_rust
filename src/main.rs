@@ -27,7 +27,7 @@ fn main() {
 
     let duos = make_duos(&player_map);
 
-    let matchups = create_matchups(&player_map, &duos, number_of_teams);
+    let matchups = create_matchups(&duos, number_of_teams);
 
     println!("There are {} possible matchups", matchups.len());
 
@@ -35,9 +35,10 @@ fn main() {
 
     // output the first 10 elements of scrims into a file called "scrims.txt"
     let mut file = File::create("scrims.txt").unwrap();
-    for scrim in scrims.iter().take(10) {
+    for scrim in scrims.iter().take(1) {
         // scrim.pretty_print(&player_map);
-        file.write_all(scrim.get_pretty_string(&player_map).as_bytes()).unwrap();
+        file.write_all(scrim.get_extended_string(&player_map).as_bytes())
+            .unwrap();
     }
 }
 
@@ -45,8 +46,9 @@ fn main() {
 fn read_players() -> HashMap<u8, Player> {
     // open file players.txt and read all lines that don't start with #
     let mut players: HashMap<u8, Player> = HashMap::new();
+    // let file = File::open("players_balanced.txt").expect("File not found");
     let file = File::open("players.txt").expect("File not found");
-    // let mut file = File::open("players_2.txt").expect("File not found");
+    // let file = File::open("players_2.txt").expect("File not found");
     let mut i = 1;
     for line in BufReader::new(file).lines() {
         let line = line.unwrap();
@@ -90,7 +92,7 @@ fn create_scrims(
         let tank_vec = &possible_matchup.0;
         let damage_vec = &possible_matchup.1;
         let support_vec = &possible_matchup.2;
-        
+
         let dps_iter = (0..number_of_teams).permutations(number_of_teams);
         let supp_iter = (0..number_of_teams).permutations(number_of_teams);
 
@@ -148,11 +150,9 @@ fn make_duos(players: &HashMap<u8, Player>) -> HashMap<Position, Vec<(u8, u8)>> 
 }
 
 fn create_matchups(
-    players: &HashMap<u8, Player>,
     player_duos: &HashMap<Position, Vec<(u8, u8)>>,
     number_of_teams: usize,
 ) -> Vec<(Vec<(u8, u8)>, Vec<(u8, u8)>, Vec<(u8, u8)>)> {
-    // {
     let position_vec = vec![Position::Tank, Position::Damage, Position::Support];
 
     println!("Number of teams: {}", number_of_teams);

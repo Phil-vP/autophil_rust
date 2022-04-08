@@ -11,12 +11,12 @@ Strawie - 0 - 0 - 2000 - s
 MPSenpai - 1956 - 1941 - 2200 - s
 # Flex
 doushte - 1347 - 1880 - 1975 - d
-michealw - 3224 - 3260 - 3450 - d
-taadels - 3900 - 3600 - 3600 - d
+michealw - 2224 - 2260 - 2450 - d
+taadels - 2900 - 2600 - 2600 - d
 DominiC - 2525 - 2375 - 2930 - t
 Stormeair - 2200 - 2452 - 2750 - t
-Fool - 1700 - 1700 - 1700 - d
-HiddenSquid - 1600 - 1400 - 1400 - t
-TrixCold - 3300 - 3300 - 3000 - t
+Fool - 1700 - 2200 - 1700 - d
+HiddenSquid - 2200 - 1400 - 1400 - t
+TrixCold - 2300 - 2300 - 2000 - t
 LazaC - 2900 - 2400 - 2900 - d
 DragonEyes - 2424 - 1900 - 2500 - s

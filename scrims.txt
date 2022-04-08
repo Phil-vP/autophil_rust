@@ -1,140 +1,55 @@
 -------------------------------------
 Matchup
-Average SR: 2398.0557
-Difference to Average: 6.222412
-Rating: 640
+Average SR: 2381.389
+Difference to Average: 70.555664
+Rating: 6371
 
-Naughty Tomatoes         Team 2                   Team 3                   
-freaker: 2400            DominiC: 2525            TrixCold: 3300           
-PhilvP: 2127             Stormeair: 2200          LazaC: 2900              
-taadels: 3600            michealw: 3260           Fool: 1700               
-doushte: 1880            HiddenSquid: 1400        SharkyShark: 2173        
-Juun: 2200               DragonEyes: 2500         Strawie: 2000            
-MPSenpai: 2200           Altofox: 2500            Luhcy: 2300              
--------------------------------------
--------------------------------------
-Matchup
-Average SR: 2362.7224
-Difference to Average: 26.11084
-Rating: 731
+                 Naughty Tomatoes                   Team 2                   Team 3
+                        Sto: 2200                Dom: 2525                fre: 2400
+                        Phi: 2127                Hid: 1600                Tri: 3300
+                        taa: 3600                Laz: 2400                dou: 1880
+                        Sha: 2173                mic: 3260                Foo: 1700
+                        Juu: 2200                Dra: 2500                Alt: 2500
+                        MPS: 2200                Str: 2000                Luh: 2300
 
-Naughty Tomatoes         Team 2                   Team 3                   
-freaker: 2400            michealw: 3224           Stormeair: 2200          
-DominiC: 2525            LazaC: 2900              PhilvP: 2127             
-TrixCold: 3300           Fool: 1700               taadels: 3600            
-SharkyShark: 2173        doushte: 1880            DragonEyes: 1900         
-HiddenSquid: 1400        Strawie: 2000            Juun: 2200               
-Luhcy: 2300              Altofox: 2500            MPSenpai: 2200           
--------------------------------------
--------------------------------------
-Matchup
-Average SR: 2362.7224
-Difference to Average: 24.11084
-Rating: 814
+----------------------------------------
+Tank Values:
 
-Naughty Tomatoes         Team 2                   Team 3                   
-freaker: 2400            DominiC: 2525            Stormeair: 2200          
-michealw: 3224           TrixCold: 3300           PhilvP: 2127             
-Fool: 1700               SharkyShark: 2173        taadels: 3600            
-doushte: 1880            HiddenSquid: 1400        DragonEyes: 1900         
-LazaC: 2900              Luhcy: 2300              Juun: 2200               
-Strawie: 2000            Altofox: 2500            MPSenpai: 2200           
--------------------------------------
--------------------------------------
-Matchup
-Average SR: 2362.722
-Difference to Average: 17.44458
-Rating: 859
+Average SR over all teams: 2358.67
+Average deviation: 447.36
 
-Naughty Tomatoes         Team 2                   Team 3                   
-freaker: 2400            DominiC: 2525            Stormeair: 2200          
-michealw: 3224           TrixCold: 3300           PhilvP: 2127             
-Fool: 1700               SharkyShark: 2173        taadels: 3600            
-DragonEyes: 1900         HiddenSquid: 1400        doushte: 1880            
-LazaC: 2900              Luhcy: 2300              Juun: 2200               
-Strawie: 2000            Altofox: 2500            MPSenpai: 2200           
--------------------------------------
--------------------------------------
-Matchup
-Average SR: 2362.7224
-Difference to Average: 26.11084
-Rating: 967
+Avg  SR                    2163.5                   2062.5                   2850.0
+Avg Diff                    195.2                    296.2                    491.3
 
-Naughty Tomatoes         Team 2                   Team 3                   
-freaker: 2400            michealw: 3224           Stormeair: 2200          
-DominiC: 2525            LazaC: 2900              PhilvP: 2127             
-TrixCold: 3300           Fool: 1700               taadels: 3600            
-SharkyShark: 2173        DragonEyes: 1900         doushte: 1880            
-HiddenSquid: 1400        Strawie: 2000            Juun: 2200               
-Luhcy: 2300              Altofox: 2500            MPSenpai: 2200           
--------------------------------------
--------------------------------------
-Matchup
-Average SR: 2386.389
-Difference to Average: 29.555664
-Rating: 1082
+Dev                          51.6                    654.1                    636.4
+Dev Diff                    395.7                    206.7                    189.0
 
-Naughty Tomatoes         Team 2                   Team 3                   
-freaker: 2400            DominiC: 2525            LazaC: 2900              
-PhilvP: 2127             Stormeair: 2200          HiddenSquid: 1600        
-taadels: 3600            Fool: 1700               TrixCold: 3300           
-doushte: 1880            DragonEyes: 1900         SharkyShark: 2173        
-Juun: 2200               michealw: 3450           Strawie: 2000            
-MPSenpai: 2200           Altofox: 2500            Luhcy: 2300              
--------------------------------------
--------------------------------------
-Matchup
-Average SR: 2362.7224
-Difference to Average: 34.444336
-Rating: 1214
+----------------------------------------
+Damage Values:
 
-Naughty Tomatoes         Team 2                   Team 3                   
-freaker: 2400            michealw: 3224           Stormeair: 2200          
-TrixCold: 3300           DominiC: 2525            PhilvP: 2127             
-SharkyShark: 2173        Fool: 1700               taadels: 3600            
-HiddenSquid: 1400        doushte: 1880            DragonEyes: 1900         
-Luhcy: 2300              LazaC: 2900              Juun: 2200               
-Altofox: 2500            Strawie: 2000            MPSenpai: 2200           
--------------------------------------
--------------------------------------
-Matchup
-Average SR: 2396.0557
-Difference to Average: 18.111084
-Rating: 1292
+Average SR over all teams: 2502.17
+Average deviation: 581.48
 
-Naughty Tomatoes         Team 2                   Team 3                   
-freaker: 2400            michealw: 3224           Stormeair: 2200          
-PhilvP: 2127             DominiC: 2525            LazaC: 2900              
-taadels: 3600            SharkyShark: 2173        Fool: 1700               
-doushte: 1880            HiddenSquid: 1400        TrixCold: 3300           
-Juun: 2200               DragonEyes: 2500         Strawie: 2000            
-MPSenpai: 2200           Altofox: 2500            Luhcy: 2300              
--------------------------------------
--------------------------------------
-Matchup
-Average SR: 2386.389
-Difference to Average: 21.111084
-Rating: 1300
+Avg  SR                    2886.5                   2830.0                   1790.0
+Avg Diff                    384.3                    327.8                    712.2
 
-Naughty Tomatoes         Team 2                   Team 3                   
-freaker: 2400            DominiC: 2525            LazaC: 2900              
-PhilvP: 2127             Stormeair: 2200          HiddenSquid: 1600        
-taadels: 3600            Fool: 1700               TrixCold: 3300           
-DragonEyes: 1900         doushte: 1880            SharkyShark: 2173        
-Strawie: 2000            michealw: 3450           Juun: 2200               
-Luhcy: 2300              Altofox: 2500            MPSenpai: 2200           
--------------------------------------
--------------------------------------
-Matchup
-Average SR: 2386.389
-Difference to Average: 18.222168
-Rating: 1332
+Dev                        1009.0                    608.1                    127.3
+Dev Diff                    427.6                     26.6                    454.2
 
-Naughty Tomatoes         Team 2                   Team 3                   
-freaker: 2400            DominiC: 2525            LazaC: 2900              
-PhilvP: 2127             Stormeair: 2200          HiddenSquid: 1600        
-taadels: 3600            Fool: 1700               TrixCold: 3300           
-doushte: 1880            DragonEyes: 1900         SharkyShark: 2173        
-Strawie: 2000            michealw: 3450           Juun: 2200               
-Luhcy: 2300              Altofox: 2500            MPSenpai: 2200           
--------------------------------------
+----------------------------------------
+Support Values:
+
+Average SR over all teams: 2283.33
+Average deviation: 164.99
+
+Avg  SR                    2200.0                   2250.0                   2400.0
+Avg Diff                     83.3                     33.3                    116.7
+
+Dev                           0.0                    353.6                    141.4
+Dev Diff                    165.0                    188.6                     23.6
+
+----------------------------------------
+Global Values
+
+Sum of all Average differences:   2640.33
+Sum of all Deviation differences: 2077.01
