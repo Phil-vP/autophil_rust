@@ -1,16 +1,15 @@
 -------------------------------------
 Matchup
-Average SR: 2381.389
-Difference to Average: 70.555664
-Rating: 6371
+Average SR: 2381.3887
+Rating: 506
 
                  Naughty Tomatoes                   Team 2                   Team 3
-                        Sto: 2200                Dom: 2525                fre: 2400
-                        Phi: 2127                Hid: 1600                Tri: 3300
-                        taa: 3600                Laz: 2400                dou: 1880
-                        Sha: 2173                mic: 3260                Foo: 1700
-                        Juu: 2200                Dra: 2500                Alt: 2500
-                        MPS: 2200                Str: 2000                Luh: 2300
+                        Hid: 1600                fre: 2400                Phi: 2127
+                        Sto: 2200                Tri: 3300                Dom: 2525
+                        Sha: 2173                dou: 1880                mic: 3260
+                        Laz: 2400                Foo: 1700                taa: 3600
+                        Juu: 2200                MPS: 2200                Luh: 2300
+                        Dra: 2500                Alt: 2500                Str: 2000
 
 ----------------------------------------
 Tank Values:
@@ -18,38 +17,38 @@ Tank Values:
 Average SR over all teams: 2358.67
 Average deviation: 447.36
 
-Avg  SR                    2163.5                   2062.5                   2850.0
-Avg Diff                    195.2                    296.2                    491.3
+Avg  SR                    1900.0                   2850.0                   2326.0
+Avg Diff                    458.7                    491.3                     32.7
 
-Dev                          51.6                    654.1                    636.4
-Dev Diff                    395.7                    206.7                    189.0
+Dev                         424.3                    636.4                    281.4
+Dev Diff                     23.1                    189.0                    165.9
 
 ----------------------------------------
 Damage Values:
 
 Average SR over all teams: 2502.17
-Average deviation: 581.48
+Average deviation: 176.07
 
-Avg  SR                    2886.5                   2830.0                   1790.0
-Avg Diff                    384.3                    327.8                    712.2
+Avg  SR                    2286.5                   1790.0                   3430.0
+Avg Diff                    215.7                    712.2                    927.8
 
-Dev                        1009.0                    608.1                    127.3
-Dev Diff                    427.6                     26.6                    454.2
+Dev                         160.5                    127.3                    240.4
+Dev Diff                     15.6                     48.8                     64.3
 
 ----------------------------------------
 Support Values:
 
 Average SR over all teams: 2283.33
-Average deviation: 164.99
+Average deviation: 212.13
 
-Avg  SR                    2200.0                   2250.0                   2400.0
-Avg Diff                     83.3                     33.3                    116.7
+Avg  SR                    2350.0                   2350.0                   2150.0
+Avg Diff                     66.7                     66.7                    133.3
 
-Dev                           0.0                    353.6                    141.4
-Dev Diff                    165.0                    188.6                     23.6
+Dev                         212.1                    212.1                    212.1
+Dev Diff                      0.0                      0.0                      0.0
 
 ----------------------------------------
 Global Values
 
-Sum of all Average differences:   2640.33
-Sum of all Deviation differences: 2077.01
+Sum of all Average differences:   3105.00
+Sum of all Deviation differences: 506.76
