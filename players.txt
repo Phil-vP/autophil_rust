@@ -18,5 +18,5 @@ Stormeair - 2200 - 2452 - 2750 - t
 Fool - 1700 - 1700 - 1700 - tds
 HiddenSquid - 1600 - 1400 - 1400 - tds
 TrixCold - 3300 - 3300 - 3000 - tds
-LazaC - 2900 - 2400 - 2900 - td
-DragonEyes - 2424 - 1900 - 2500 - ds
+# LazaC - 2900 - 2400 - 2900 - td
+# DragonEyes - 2424 - 1900 - 2500 - ds

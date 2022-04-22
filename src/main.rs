@@ -5,6 +5,9 @@ use itertools::Itertools;
 use std::fs::File;
 use std::io::prelude::*;
 use std::io::{BufRead, BufReader};
+use std::thread;
+use std::sync::{Arc, Mutex};
+
 
 mod player;
 use player::Player;
@@ -31,7 +34,10 @@ fn main() {
 
     println!("There are {} possible matchups", matchups.len());
 
-    let scrims = create_scrims(&player_map, &matchups, number_of_teams);
+    // let scrims = create_scrims(&player_map, &matchups, number_of_teams);
+
+    let matchup_arc = Arc::new(&matchups);
+    let scrims = create_scrims_parallel(&player_map, matchup_arc, number_of_teams);
 
     // output the first 10 elements of scrims into a file called "scrims.txt"
     let mut file = File::create("scrims.txt").unwrap();
@@ -116,6 +122,95 @@ fn create_scrims(
         }
     }
 
+    scrims.sort_by(|a, b| a.rating.partial_cmp(&b.rating).unwrap());
+
+    scrims
+}
+
+
+fn create_scrims_parallel(
+    players_raw: &HashMap<u8, Player>,
+    matchup_arc: Arc<&Vec<(Vec<(u8, u8)>, Vec<(u8, u8)>, Vec<(u8, u8)>)>>,
+    number_of_teams: usize,
+) -> Vec<Matchup> {
+    let scrims: Vec<Matchup> = Vec::new();
+
+    let mut team_names_raw: Vec<String> = vec!["Naughty Tomatoes".to_string()];
+
+    for _ in team_names_raw.len()..number_of_teams {
+        let team_name = format!("Team {}", team_names_raw.len() + 1);
+        team_names_raw.push(team_name);
+    }
+
+    // team_names.reverse();
+
+    println!("{:?}", team_names_raw);
+
+    let matchups = matchup_arc.lock().unwrap();
+
+    let scrim_progress_bar = ProgressBar::new(matchups.len() as u64);
+    scrim_progress_bar.reset();
+
+    let number_of_threads = 8;
+
+    let matches_split = matchups.chunks(matchups.len() / number_of_threads);
+    
+    let mut handles = vec![];
+
+    let mutex = Mutex::new((scrims, scrim_progress_bar));
+    let arc = Arc::new(mutex);
+
+    for matchup_chunk in matches_split {
+
+        let cloned_arc = Arc::clone(&arc);
+        let players = players_raw.clone();
+        let team_names = team_names_raw.clone();
+
+        let handle = thread::spawn(move || {
+            for possible_matchup in matchup_chunk {
+
+                let mut local_scrims: Vec<Matchup> = Vec::new();
+
+                let tank_vec = &possible_matchup.0;
+                let damage_vec = &possible_matchup.1;
+                let support_vec = &possible_matchup.2;
+
+                let dps_iter = (0..number_of_teams).permutations(number_of_teams);
+                let supp_iter = (0..number_of_teams).permutations(number_of_teams);
+
+                for dps_perm in dps_iter {
+                    for supp_perm in supp_iter.clone() {
+                        let mut matchup_teams: Vec<(String, u8, u8, u8, u8, u8, u8)> = Vec::new();
+                        for i in 0..number_of_teams {
+                            matchup_teams.push((
+                                team_names[i].clone(),
+                                tank_vec.get(i).unwrap().0,
+                                tank_vec.get(i).unwrap().1,
+                                damage_vec.get(dps_perm[i]).unwrap().0,
+                                damage_vec.get(dps_perm[i]).unwrap().1,
+                                support_vec.get(supp_perm[i]).unwrap().0,
+                                support_vec.get(supp_perm[i]).unwrap().1,
+                            ));
+                        }
+                        let matchup = Matchup::new(matchup_teams, &players);
+                        local_scrims.push(matchup);
+                    }
+                }
+                let mut tupel = cloned_arc.lock().unwrap();
+                let scrims_shared = &mut tupel.0;
+                scrims_shared.append(&mut local_scrims);
+                let scrim_progress_bar_shared = &mut tupel.1;
+                scrim_progress_bar_shared.inc(1);
+            }
+        });
+        handles.push(handle);
+    }
+    
+    for handle in handles {
+        handle.join().unwrap();
+    }
+
+    let mut scrims = arc.lock().unwrap().0.clone();
     scrims.sort_by(|a, b| a.rating.partial_cmp(&b.rating).unwrap());
 
     scrims
