@@ -34,10 +34,10 @@ fn main() {
 
     println!("There are {} possible matchups", matchups.len());
 
-    // let scrims = create_scrims(&player_map, &matchups, number_of_teams);
+    let scrims = create_scrims(&player_map, &matchups, number_of_teams);
 
-    let matchup_arc = Arc::new(&matchups);
-    let scrims = create_scrims_parallel(&player_map, matchup_arc, number_of_teams);
+    // let matchup_arc = Arc::new(&matchups);
+    // let scrims = create_scrims_parallel(&player_map, matchup_arc, number_of_teams);
 
     // output the first 10 elements of scrims into a file called "scrims.txt"
     let mut file = File::create("scrims.txt").unwrap();
@@ -91,6 +91,7 @@ fn create_scrims(
 
     let scrim_progress_bar = ProgressBar::new(matchups.len() as u64);
     scrim_progress_bar.reset();
+    scrim_progress_bar.inc(1);
 
     for possible_matchup in matchups {
         scrim_progress_bar.inc(1);
@@ -127,10 +128,10 @@ fn create_scrims(
     scrims
 }
 
-
+/*
 fn create_scrims_parallel(
     players_raw: &HashMap<u8, Player>,
-    matchup_arc: Arc<&Vec<(Vec<(u8, u8)>, Vec<(u8, u8)>, Vec<(u8, u8)>)>>,
+    matchups: Arc<&Vec<(Vec<(u8, u8)>, Vec<(u8, u8)>, Vec<(u8, u8)>)>>,
     number_of_teams: usize,
 ) -> Vec<Matchup> {
     let scrims: Vec<Matchup> = Vec::new();
@@ -146,7 +147,7 @@ fn create_scrims_parallel(
 
     println!("{:?}", team_names_raw);
 
-    let matchups = matchup_arc.lock().unwrap();
+    // let matchups = matchup_arc;
 
     let scrim_progress_bar = ProgressBar::new(matchups.len() as u64);
     scrim_progress_bar.reset();
@@ -215,6 +216,7 @@ fn create_scrims_parallel(
 
     scrims
 }
+*/
 
 fn make_duos(players: &HashMap<u8, Player>) -> HashMap<Position, Vec<(u8, u8)>> {
     let position_vec = vec![Position::Tank, Position::Damage, Position::Support];

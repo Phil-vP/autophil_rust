@@ -1,6 +1,6 @@
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum Position {
-    Tank,
-    Damage,
-    Support,
+    Tank = 0,
+    Damage = 1,
+    Support = 2,
 }
