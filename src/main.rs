@@ -34,10 +34,17 @@ fn main() {
 
     println!("There are {} possible matchups", matchups.len());
 
-    let scrims = create_scrims(&player_map, &matchups, number_of_teams);
+    let parallel = true;
 
-    // let matchup_arc = Arc::new(&matchups);
-    // let scrims = create_scrims_parallel(&player_map, matchup_arc, number_of_teams);
+    let scrims = if parallel {
+        let matchup_arc = Arc::new(matchups);
+        create_scrims_parallel(&player_map, matchup_arc, number_of_teams)
+    }
+    else{
+        create_scrims(&player_map, &matchups, number_of_teams)
+    };
+
+
 
     // output the first 10 elements of scrims into a file called "scrims.txt"
     let mut file = File::create("scrims.txt").unwrap();
@@ -128,10 +135,10 @@ fn create_scrims(
     scrims
 }
 
-/*
+
 fn create_scrims_parallel(
     players_raw: &HashMap<u8, Player>,
-    matchups: Arc<&Vec<(Vec<(u8, u8)>, Vec<(u8, u8)>, Vec<(u8, u8)>)>>,
+    matchups: Arc<Vec<(Vec<(u8, u8)>, Vec<(u8, u8)>, Vec<(u8, u8)>)>>,
     number_of_teams: usize,
 ) -> Vec<Matchup> {
     let scrims: Vec<Matchup> = Vec::new();
@@ -149,19 +156,26 @@ fn create_scrims_parallel(
 
     // let matchups = matchup_arc;
 
-    let scrim_progress_bar = ProgressBar::new(matchups.len() as u64);
+    let number_of_matchups = matchups.len();
+
+    let scrim_progress_bar = ProgressBar::new(number_of_matchups as u64);
     scrim_progress_bar.reset();
 
     let number_of_threads = 8;
 
-    let matches_split = matchups.chunks(matchups.len() / number_of_threads);
+    let _length = matchups.len();
+
+    let chunk_length = number_of_matchups / number_of_threads;
+
+    // let matchups_split = matchups.chunks(number_of_matchups / number_of_threads);
+
     
     let mut handles = vec![];
 
     let mutex = Mutex::new((scrims, scrim_progress_bar));
     let arc = Arc::new(mutex);
 
-    for matchup_chunk in matches_split {
+    for matchup_chunk in matchups.chunks(chunk_length) {
 
         let cloned_arc = Arc::clone(&arc);
         let players = players_raw.clone();
@@ -216,7 +230,7 @@ fn create_scrims_parallel(
 
     scrims
 }
-*/
+
 
 fn make_duos(players: &HashMap<u8, Player>) -> HashMap<Position, Vec<(u8, u8)>> {
     let position_vec = vec![Position::Tank, Position::Damage, Position::Support];
