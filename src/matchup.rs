@@ -116,7 +116,7 @@ impl Matchup {
         print!("{}", self.get_pretty_string(players));
     }
 
-    pub fn get_extended_string(&self, players: &HashMap<u8, Player>) -> String {
+    pub fn _get_extended_string(&self, players: &HashMap<u8, Player>) -> String {
         let mut extended_string = self.get_pretty_string(players);
 
         let position_vec = vec![Position::Tank, Position::Damage, Position::Support];

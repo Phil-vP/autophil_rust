@@ -1,140 +1,150 @@
+SCRIM A:
 -------------------------------------
 Matchup
-Average SR: 2259.1665
-Rating: 371
+Average SR: 2343.4446
+Rating: 1219
 
-                  Naughty Tomatoes                   Team 2
-                           2255.50                  2262.83
-Tank:                   Fool: 1700             PhilvP: 2127
-Tank:              Stormeair: 2200        HiddenSquid: 1600
-DPS:             SharkyShark: 2173           TrixCold: 3300
-DPS:                michealw: 3260            DominiC: 2375
-Support:             Strawie: 2000            doushte: 1975
-Support:                Juun: 2200           MPSenpai: 2200
+                  Naughty Tomatoes                   Team 2                   Team 3
+                           2416.67                  2308.17                  2305.50
+Tank:            HiddenSquid: 1600            doushte: 1347            freaker: 2400
+Tank:              Stormeair: 2200             PhilvP: 2127               Fool: 1700
+DPS:                   LazaC: 2400           TrixCold: 3300           michealw: 3260
+DPS:                 taadels: 3600            DominiC: 2375        SharkyShark: 2173
+Support:             Altofox: 2500           MPSenpai: 2200            Strawie: 2000
+Support:                Juun: 2200         DragonEyes: 2500              Luhcy: 2300
 -------------------------------------
+SCRIM B:
 -------------------------------------
 Matchup
-Average SR: 2259.1665
-Rating: 371
+Average SR: 2343.4446
+Rating: 1219
 
-                  Naughty Tomatoes                   Team 2
-                           2251.33                  2267.00
-Tank:                   Fool: 1700             PhilvP: 2127
-Tank:              Stormeair: 2200        HiddenSquid: 1600
-DPS:             SharkyShark: 2173           TrixCold: 3300
-DPS:                michealw: 3260            DominiC: 2375
-Support:             doushte: 1975            Strawie: 2000
-Support:            MPSenpai: 2200               Juun: 2200
+                  Naughty Tomatoes                   Team 2                   Team 3
+                           2416.67                  2241.50                  2372.17
+Tank:            HiddenSquid: 1600            doushte: 1347            freaker: 2400
+Tank:              Stormeair: 2200             PhilvP: 2127               Fool: 1700
+DPS:                   LazaC: 2400           TrixCold: 3300           michealw: 3260
+DPS:                 taadels: 3600            DominiC: 2375        SharkyShark: 2173
+Support:             Altofox: 2500            Strawie: 2000           MPSenpai: 2200
+Support:                Juun: 2200              Luhcy: 2300         DragonEyes: 2500
 -------------------------------------
+SCRIM C:
 -------------------------------------
 Matchup
-Average SR: 2259.1665
-Rating: 371
+Average SR: 2343.4446
+Rating: 1219
 
-                  Naughty Tomatoes                   Team 2
-                           2295.83                  2222.50
-Tank:                   Fool: 1700             PhilvP: 2127
-Tank:              Stormeair: 2200        HiddenSquid: 1600
-DPS:                TrixCold: 3300        SharkyShark: 2173
-DPS:                 DominiC: 2375           michealw: 3260
-Support:             Strawie: 2000            doushte: 1975
-Support:                Juun: 2200           MPSenpai: 2200
+                  Naughty Tomatoes                   Team 2                   Team 3
+                           2416.67                  2308.17                  2305.50
+Tank:            HiddenSquid: 1600            doushte: 1347            freaker: 2400
+Tank:              Stormeair: 2200             PhilvP: 2127               Fool: 1700
+DPS:                   LazaC: 2400           TrixCold: 3300           michealw: 3260
+DPS:                 taadels: 3600            DominiC: 2375        SharkyShark: 2173
+Support:            MPSenpai: 2200            Altofox: 2500            Strawie: 2000
+Support:          DragonEyes: 2500               Juun: 2200              Luhcy: 2300
 -------------------------------------
+SCRIM D:
 -------------------------------------
 Matchup
-Average SR: 2259.1667
-Rating: 371
+Average SR: 2343.4446
+Rating: 1219
 
-                  Naughty Tomatoes                   Team 2
-                           2291.67                  2226.67
-Tank:                   Fool: 1700             PhilvP: 2127
-Tank:              Stormeair: 2200        HiddenSquid: 1600
-DPS:                TrixCold: 3300        SharkyShark: 2173
-DPS:                 DominiC: 2375           michealw: 3260
-Support:             doushte: 1975            Strawie: 2000
-Support:            MPSenpai: 2200               Juun: 2200
+                  Naughty Tomatoes                   Team 2                   Team 3
+                           2416.67                  2241.50                  2372.17
+Tank:            HiddenSquid: 1600            doushte: 1347            freaker: 2400
+Tank:              Stormeair: 2200             PhilvP: 2127               Fool: 1700
+DPS:                   LazaC: 2400           TrixCold: 3300           michealw: 3260
+DPS:                 taadels: 3600            DominiC: 2375        SharkyShark: 2173
+Support:            MPSenpai: 2200            Strawie: 2000            Altofox: 2500
+Support:          DragonEyes: 2500              Luhcy: 2300               Juun: 2200
 -------------------------------------
+SCRIM E:
 -------------------------------------
 Matchup
-Average SR: 2259.1665
-Rating: 371
+Average SR: 2343.4446
+Rating: 1219
 
-                  Naughty Tomatoes                   Team 2
-                           2255.50                  2262.83
-Tank:                   Fool: 1700             PhilvP: 2127
-Tank:              Stormeair: 2200        HiddenSquid: 1600
-DPS:             SharkyShark: 2173           TrixCold: 3300
-DPS:                michealw: 3260            DominiC: 2375
-Support:             Strawie: 2000               Juun: 2200
-Support:            MPSenpai: 2200            doushte: 1975
+                  Naughty Tomatoes                   Team 2                   Team 3
+                           2350.00                  2308.17                  2372.17
+Tank:            HiddenSquid: 1600            doushte: 1347            freaker: 2400
+Tank:              Stormeair: 2200             PhilvP: 2127               Fool: 1700
+DPS:                   LazaC: 2400           TrixCold: 3300           michealw: 3260
+DPS:                 taadels: 3600            DominiC: 2375        SharkyShark: 2173
+Support:             Strawie: 2000            Altofox: 2500           MPSenpai: 2200
+Support:               Luhcy: 2300               Juun: 2200         DragonEyes: 2500
 -------------------------------------
+SCRIM F:
 -------------------------------------
 Matchup
-Average SR: 2259.1665
-Rating: 371
+Average SR: 2343.4446
+Rating: 1219
 
-                  Naughty Tomatoes                   Team 2
-                           2251.33                  2267.00
-Tank:                   Fool: 1700             PhilvP: 2127
-Tank:              Stormeair: 2200        HiddenSquid: 1600
-DPS:             SharkyShark: 2173           TrixCold: 3300
-DPS:                michealw: 3260            DominiC: 2375
-Support:                Juun: 2200            Strawie: 2000
-Support:             doushte: 1975           MPSenpai: 2200
+                  Naughty Tomatoes                   Team 2                   Team 3
+                           2350.00                  2308.17                  2372.17
+Tank:            HiddenSquid: 1600            doushte: 1347            freaker: 2400
+Tank:              Stormeair: 2200             PhilvP: 2127               Fool: 1700
+DPS:                   LazaC: 2400           TrixCold: 3300           michealw: 3260
+DPS:                 taadels: 3600            DominiC: 2375        SharkyShark: 2173
+Support:             Strawie: 2000           MPSenpai: 2200            Altofox: 2500
+Support:               Luhcy: 2300         DragonEyes: 2500               Juun: 2200
 -------------------------------------
+SCRIM G:
 -------------------------------------
 Matchup
-Average SR: 2259.1665
-Rating: 371
+Average SR: 2343.4443
+Rating: 1219
 
-                  Naughty Tomatoes                   Team 2
-                           2295.83                  2222.50
-Tank:                   Fool: 1700             PhilvP: 2127
-Tank:              Stormeair: 2200        HiddenSquid: 1600
-DPS:                TrixCold: 3300        SharkyShark: 2173
-DPS:                 DominiC: 2375           michealw: 3260
-Support:             Strawie: 2000               Juun: 2200
-Support:            MPSenpai: 2200            doushte: 1975
+                  Naughty Tomatoes                   Team 2                   Team 3
+                           2416.67                  2267.83                  2345.83
+Tank:            HiddenSquid: 1600            doushte: 1347            freaker: 2400
+Tank:              Stormeair: 2200             PhilvP: 2127               Fool: 1700
+DPS:                   LazaC: 2400           michealw: 3260           TrixCold: 3300
+DPS:                 taadels: 3600        SharkyShark: 2173            DominiC: 2375
+Support:             Altofox: 2500           MPSenpai: 2200            Strawie: 2000
+Support:                Juun: 2200         DragonEyes: 2500              Luhcy: 2300
 -------------------------------------
+SCRIM H:
 -------------------------------------
 Matchup
-Average SR: 2259.1667
-Rating: 371
+Average SR: 2343.4446
+Rating: 1219
 
-                  Naughty Tomatoes                   Team 2
-                           2291.67                  2226.67
-Tank:                   Fool: 1700             PhilvP: 2127
-Tank:              Stormeair: 2200        HiddenSquid: 1600
-DPS:                TrixCold: 3300        SharkyShark: 2173
-DPS:                 DominiC: 2375           michealw: 3260
-Support:                Juun: 2200            Strawie: 2000
-Support:             doushte: 1975           MPSenpai: 2200
+                  Naughty Tomatoes                   Team 2                   Team 3
+                           2416.67                  2201.17                  2412.50
+Tank:            HiddenSquid: 1600            doushte: 1347            freaker: 2400
+Tank:              Stormeair: 2200             PhilvP: 2127               Fool: 1700
+DPS:                   LazaC: 2400           michealw: 3260           TrixCold: 3300
+DPS:                 taadels: 3600        SharkyShark: 2173            DominiC: 2375
+Support:             Altofox: 2500            Strawie: 2000           MPSenpai: 2200
+Support:                Juun: 2200              Luhcy: 2300         DragonEyes: 2500
 -------------------------------------
+SCRIM I:
 -------------------------------------
 Matchup
-Average SR: 2259.1667
-Rating: 387
+Average SR: 2343.4443
+Rating: 1219
 
-                  Naughty Tomatoes                   Team 2
-                           2262.17                  2256.17
-Tank:                   Fool: 1700             PhilvP: 2127
-Tank:              Stormeair: 2200        HiddenSquid: 1600
-DPS:             SharkyShark: 2173           michealw: 3260
-DPS:                TrixCold: 3300            DominiC: 2375
-Support:             Strawie: 2000            doushte: 1975
-Support:                Juun: 2200           MPSenpai: 2200
+                  Naughty Tomatoes                   Team 2                   Team 3
+                           2416.67                  2267.83                  2345.83
+Tank:            HiddenSquid: 1600            doushte: 1347            freaker: 2400
+Tank:              Stormeair: 2200             PhilvP: 2127               Fool: 1700
+DPS:                   LazaC: 2400           michealw: 3260           TrixCold: 3300
+DPS:                 taadels: 3600        SharkyShark: 2173            DominiC: 2375
+Support:            MPSenpai: 2200            Altofox: 2500            Strawie: 2000
+Support:          DragonEyes: 2500               Juun: 2200              Luhcy: 2300
 -------------------------------------
+SCRIM J:
 -------------------------------------
 Matchup
-Average SR: 2259.1665
-Rating: 387
+Average SR: 2343.4446
+Rating: 1219
 
-                  Naughty Tomatoes                   Team 2
-                           2258.00                  2260.33
-Tank:                   Fool: 1700             PhilvP: 2127
-Tank:              Stormeair: 2200        HiddenSquid: 1600
-DPS:             SharkyShark: 2173           michealw: 3260
-DPS:                TrixCold: 3300            DominiC: 2375
-Support:             doushte: 1975            Strawie: 2000
-Support:            MPSenpai: 2200               Juun: 2200
+                  Naughty Tomatoes                   Team 2                   Team 3
+                           2416.67                  2201.17                  2412.50
+Tank:            HiddenSquid: 1600            doushte: 1347            freaker: 2400
+Tank:              Stormeair: 2200             PhilvP: 2127               Fool: 1700
+DPS:                   LazaC: 2400           michealw: 3260           TrixCold: 3300
+DPS:                 taadels: 3600        SharkyShark: 2173            DominiC: 2375
+Support:            MPSenpai: 2200            Strawie: 2000            Altofox: 2500
+Support:          DragonEyes: 2500              Luhcy: 2300               Juun: 2200
 -------------------------------------

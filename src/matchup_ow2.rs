@@ -57,12 +57,6 @@ impl OW2Matchup {
 
         let number_of_teams = created_teams.len() as f32;
 
-        // let mut averages: HashMap<Position, f32> = HashMap::new();
-        // let mut full_role_average: HashMap<Position, f32> = HashMap::new();
-        // let mut standard_deviations: HashMap<Position, f32> = HashMap::new();
-        // let mut average_deviations: HashMap<Position, f32> = HashMap::new();
-        // let mut team_average_sr: f32 = 0.0;
-
         let mut averages: [f32; 3] = [0.0; 3];
         let mut full_role_average: [f32; 3] = [0.0; 3];
         let mut standard_deviations: [f32; 3] = [0.0; 3];
@@ -120,7 +114,7 @@ impl OW2Matchup {
         print!("{}", self.get_pretty_string(players));
     }
 
-    pub fn get_extended_string(&self, players: &HashMap<u8, Player>) -> String {
+    pub fn _get_extended_string(&self, players: &HashMap<u8, Player>) -> String {
         let mut extended_string = self.get_pretty_string(players);
 
         let position_vec = vec![Position::Tank, Position::Damage, Position::Support];

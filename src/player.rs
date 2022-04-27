@@ -43,18 +43,6 @@ impl Player {
         Ok(player)
     }
 
-    pub fn create_dummy() -> Player {
-        Player {
-            name: "---".to_string(),
-            tank_sr: 0,
-            damage_sr: 0,
-            support_sr: 0,
-            plays_tank: false,
-            plays_damage: false,
-            plays_support: false,
-        }
-    }
-
     pub fn get_sr(&self, pos: Position) -> i16 {
         match pos {
             Position::Tank => self.tank_sr,
@@ -71,7 +59,7 @@ impl Player {
         }
     }
 
-    pub fn to_string(&self) -> String {
+    pub fn _to_string(&self) -> String {
         let mut s = String::new();
         s.push_str(&format!("{}\n", &self.name));
         s.push_str(&format!("plays_tank: {}\n", &self.plays_tank));

@@ -105,7 +105,7 @@ impl OW2Team {
         average_sr
     }
 
-    pub fn get_standard_deviation(&self) -> f32 {
+    pub fn _get_standard_deviation(&self) -> f32 {
         let average_sr = self.get_average_sr() as i32;
         let mut standard_deviation: i32 = 0;
         for player in self.get_all_player_srs() {
@@ -140,68 +140,32 @@ impl OW2Team {
         s.push_str(&format!("Average SR {}\n", &self.get_average_sr()));
         s.push_str(&format!(
             "Standard deviation {}\n",
-            &self.get_standard_deviation()
+            &self._get_standard_deviation()
         ));
         s.push_str(&format!(
             "Tank:    {} - {}\n",
-            &self
-                .tank
-                .as_ref()
-                .unwrap_or(&Player::create_dummy())
-                .get_sr(Position::Tank),
-            &self.tank.as_ref().unwrap_or(&Player::create_dummy()).name
+            &self.tank.as_ref().unwrap().get_sr(Position::Tank),
+            &self.tank.as_ref().unwrap().name
         ));
         s.push_str(&format!(
             "Damage:  {} - {}\n",
-            &self
-                .damage_1
-                .as_ref()
-                .unwrap_or(&Player::create_dummy())
-                .get_sr(Position::Damage),
-            &self
-                .damage_1
-                .as_ref()
-                .unwrap_or(&Player::create_dummy())
-                .name
+            &self.damage_1.as_ref().unwrap().get_sr(Position::Damage),
+            &self.damage_1.as_ref().unwrap().name
         ));
         s.push_str(&format!(
             "Damage:  {} - {}\n",
-            &self
-                .damage_2
-                .as_ref()
-                .unwrap_or(&Player::create_dummy())
-                .get_sr(Position::Damage),
-            &self
-                .damage_2
-                .as_ref()
-                .unwrap_or(&Player::create_dummy())
-                .name
+            &self.damage_2.as_ref().unwrap().get_sr(Position::Damage),
+            &self.damage_2.as_ref().unwrap().name
         ));
         s.push_str(&format!(
             "Support: {} - {}\n",
-            &self
-                .support_1
-                .as_ref()
-                .unwrap_or(&Player::create_dummy())
-                .get_sr(Position::Support),
-            &self
-                .support_1
-                .as_ref()
-                .unwrap_or(&Player::create_dummy())
-                .name
+            &self.support_1.as_ref().unwrap().get_sr(Position::Support),
+            &self.support_1.as_ref().unwrap().name
         ));
         s.push_str(&format!(
             "Support: {} - {}\n",
-            &self
-                .support_2
-                .as_ref()
-                .unwrap_or(&Player::create_dummy())
-                .get_sr(Position::Support),
-            &self
-                .support_2
-                .as_ref()
-                .unwrap_or(&Player::create_dummy())
-                .name
+            &self.support_2.as_ref().unwrap().get_sr(Position::Support),
+            &self.support_2.as_ref().unwrap().name
         ));
         s
     }
