@@ -1,55 +1,140 @@
 -------------------------------------
 Matchup
+Average SR: 2259.1665
+Rating: 371
+
+                  Naughty Tomatoes                   Team 2
+                           2255.50                  2262.83
+Tank:                   Fool: 1700             PhilvP: 2127
+Tank:              Stormeair: 2200        HiddenSquid: 1600
+DPS:             SharkyShark: 2173           TrixCold: 3300
+DPS:                michealw: 3260            DominiC: 2375
+Support:             Strawie: 2000            doushte: 1975
+Support:                Juun: 2200           MPSenpai: 2200
+-------------------------------------
+-------------------------------------
+Matchup
+Average SR: 2259.1665
+Rating: 371
+
+                  Naughty Tomatoes                   Team 2
+                           2251.33                  2267.00
+Tank:                   Fool: 1700             PhilvP: 2127
+Tank:              Stormeair: 2200        HiddenSquid: 1600
+DPS:             SharkyShark: 2173           TrixCold: 3300
+DPS:                michealw: 3260            DominiC: 2375
+Support:             doushte: 1975            Strawie: 2000
+Support:            MPSenpai: 2200               Juun: 2200
+-------------------------------------
+-------------------------------------
+Matchup
+Average SR: 2259.1665
+Rating: 371
+
+                  Naughty Tomatoes                   Team 2
+                           2295.83                  2222.50
+Tank:                   Fool: 1700             PhilvP: 2127
+Tank:              Stormeair: 2200        HiddenSquid: 1600
+DPS:                TrixCold: 3300        SharkyShark: 2173
+DPS:                 DominiC: 2375           michealw: 3260
+Support:             Strawie: 2000            doushte: 1975
+Support:                Juun: 2200           MPSenpai: 2200
+-------------------------------------
+-------------------------------------
+Matchup
 Average SR: 2259.1667
 Rating: 371
 
-                 Naughty Tomatoes                   Team 2
-                          2291.67                  2226.67
-                        Sto: 2200                Phi: 2127
-                        Foo: 1700                Hid: 1600
-                        Dom: 2375                mic: 3260
-                        Tri: 3300                Sha: 2173
-                        dou: 1975                Str: 2000
-                        Juu: 2200                MPS: 2200
+                  Naughty Tomatoes                   Team 2
+                           2291.67                  2226.67
+Tank:                   Fool: 1700             PhilvP: 2127
+Tank:              Stormeair: 2200        HiddenSquid: 1600
+DPS:                TrixCold: 3300        SharkyShark: 2173
+DPS:                 DominiC: 2375           michealw: 3260
+Support:             doushte: 1975            Strawie: 2000
+Support:            MPSenpai: 2200               Juun: 2200
+-------------------------------------
+-------------------------------------
+Matchup
+Average SR: 2259.1665
+Rating: 371
 
-----------------------------------------
-Tank Values:
+                  Naughty Tomatoes                   Team 2
+                           2255.50                  2262.83
+Tank:                   Fool: 1700             PhilvP: 2127
+Tank:              Stormeair: 2200        HiddenSquid: 1600
+DPS:             SharkyShark: 2173           TrixCold: 3300
+DPS:                michealw: 3260            DominiC: 2375
+Support:             Strawie: 2000               Juun: 2200
+Support:            MPSenpai: 2200            doushte: 1975
+-------------------------------------
+-------------------------------------
+Matchup
+Average SR: 2259.1665
+Rating: 371
 
-Average SR over all teams: 1906.75
-Average deviation: 363.10
+                  Naughty Tomatoes                   Team 2
+                           2251.33                  2267.00
+Tank:                   Fool: 1700             PhilvP: 2127
+Tank:              Stormeair: 2200        HiddenSquid: 1600
+DPS:             SharkyShark: 2173           TrixCold: 3300
+DPS:                michealw: 3260            DominiC: 2375
+Support:                Juun: 2200            Strawie: 2000
+Support:             doushte: 1975           MPSenpai: 2200
+-------------------------------------
+-------------------------------------
+Matchup
+Average SR: 2259.1665
+Rating: 371
 
-Avg  SR                    1950.0                   1863.5
-Avg Diff                     43.2                     43.2
+                  Naughty Tomatoes                   Team 2
+                           2295.83                  2222.50
+Tank:                   Fool: 1700             PhilvP: 2127
+Tank:              Stormeair: 2200        HiddenSquid: 1600
+DPS:                TrixCold: 3300        SharkyShark: 2173
+DPS:                 DominiC: 2375           michealw: 3260
+Support:             Strawie: 2000               Juun: 2200
+Support:            MPSenpai: 2200            doushte: 1975
+-------------------------------------
+-------------------------------------
+Matchup
+Average SR: 2259.1667
+Rating: 371
 
-Dev                         353.6                    372.6
-Dev Diff                      9.5                      9.5
+                  Naughty Tomatoes                   Team 2
+                           2291.67                  2226.67
+Tank:                   Fool: 1700             PhilvP: 2127
+Tank:              Stormeair: 2200        HiddenSquid: 1600
+DPS:                TrixCold: 3300        SharkyShark: 2173
+DPS:                 DominiC: 2375           michealw: 3260
+Support:                Juun: 2200            Strawie: 2000
+Support:             doushte: 1975           MPSenpai: 2200
+-------------------------------------
+-------------------------------------
+Matchup
+Average SR: 2259.1667
+Rating: 387
 
-----------------------------------------
-Damage Values:
+                  Naughty Tomatoes                   Team 2
+                           2262.17                  2256.17
+Tank:                   Fool: 1700             PhilvP: 2127
+Tank:              Stormeair: 2200        HiddenSquid: 1600
+DPS:             SharkyShark: 2173           michealw: 3260
+DPS:                TrixCold: 3300            DominiC: 2375
+Support:             Strawie: 2000            doushte: 1975
+Support:                Juun: 2200           MPSenpai: 2200
+-------------------------------------
+-------------------------------------
+Matchup
+Average SR: 2259.1665
+Rating: 387
 
-Average SR over all teams: 2777.00
-Average deviation: 711.35
-
-Avg  SR                    2837.5                   2716.5
-Avg Diff                     60.5                     60.5
-
-Dev                         654.1                    768.6
-Dev Diff                     57.3                     57.3
-
-----------------------------------------
-Support Values:
-
-Average SR over all teams: 2093.75
-Average deviation: 150.26
-
-Avg  SR                    2087.5                   2100.0
-Avg Diff                      6.2                      6.2
-
-Dev                         159.1                    141.4
-Dev Diff                      8.8                      8.8
-
-----------------------------------------
-Global Values
-
-Sum of all Average differences:   220.00
-Sum of all Deviation differences: 151.32
+                  Naughty Tomatoes                   Team 2
+                           2258.00                  2260.33
+Tank:                   Fool: 1700             PhilvP: 2127
+Tank:              Stormeair: 2200        HiddenSquid: 1600
+DPS:             SharkyShark: 2173           michealw: 3260
+DPS:                TrixCold: 3300            DominiC: 2375
+Support:             doushte: 1975            Strawie: 2000
+Support:            MPSenpai: 2200               Juun: 2200
+-------------------------------------

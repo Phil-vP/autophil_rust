@@ -1,6 +1,6 @@
+use crate::OW2Team;
 use crate::Player;
 use crate::Position;
-use crate::Team;
 use std::collections::HashMap;
 
 #[derive(Debug, Clone, PartialEq)]
@@ -10,9 +10,9 @@ pub enum MatchupKind {
 }
 
 #[derive(Debug, Clone, PartialEq)]
-pub struct Matchup {
+pub struct OW2Matchup {
     pub kind: MatchupKind,
-    pub extended_teams: Vec<(String, u8, u8, u8, u8, u8, u8, f32)>,
+    pub extended_teams: Vec<(String, u8, u8, u8, u8, u8, f32)>,
     pub sr_average: f32,
     pub full_role_average: [f32; 3],
     pub standard_deviations: [f32; 3],
@@ -20,28 +20,27 @@ pub struct Matchup {
     pub rating: i16,
 }
 
-impl Matchup {
+impl OW2Matchup {
     pub fn new(
-        teams: Vec<(String, u8, u8, u8, u8, u8, u8)>,
+        teams: Vec<(String, u8, u8, u8, u8, u8)>,
         players: &HashMap<u8, Player>,
-    ) -> Matchup {
+    ) -> OW2Matchup {
         let kind = if teams.len() == 2 {
             MatchupKind::TwoWayScrim
         } else {
             MatchupKind::ThreeWayScrim
         };
 
-        let mut created_teams: Vec<Team> = Vec::new();
-        let mut extended_teams: Vec<(String, u8, u8, u8, u8, u8, u8, f32)> = Vec::new();
+        let mut created_teams: Vec<OW2Team> = Vec::new();
+        let mut extended_teams: Vec<(String, u8, u8, u8, u8, u8, f32)> = Vec::new();
         for team_comp in &teams {
-            let team = Team::new(
+            let team = OW2Team::new(
                 team_comp.0.clone(),
                 players[&team_comp.1].clone(),
                 players[&team_comp.2].clone(),
                 players[&team_comp.3].clone(),
                 players[&team_comp.4].clone(),
                 players[&team_comp.5].clone(),
-                players[&team_comp.6].clone(),
             );
             let average_sr = team.get_average_sr();
             created_teams.push(team);
@@ -52,12 +51,17 @@ impl Matchup {
                 team_comp.3,
                 team_comp.4,
                 team_comp.5,
-                team_comp.6,
                 average_sr,
             ));
         }
 
         let number_of_teams = created_teams.len() as f32;
+
+        // let mut averages: HashMap<Position, f32> = HashMap::new();
+        // let mut full_role_average: HashMap<Position, f32> = HashMap::new();
+        // let mut standard_deviations: HashMap<Position, f32> = HashMap::new();
+        // let mut average_deviations: HashMap<Position, f32> = HashMap::new();
+        // let mut team_average_sr: f32 = 0.0;
 
         let mut averages: [f32; 3] = [0.0; 3];
         let mut full_role_average: [f32; 3] = [0.0; 3];
@@ -101,7 +105,7 @@ impl Matchup {
 
         let rating = (sum_of_all_dev_diffs + sum_of_all_avg_diffs) as i16;
 
-        Matchup {
+        OW2Matchup {
             kind,
             extended_teams,
             sr_average: team_average_sr,
@@ -121,16 +125,15 @@ impl Matchup {
 
         let position_vec = vec![Position::Tank, Position::Damage, Position::Support];
 
-        let mut created_teams: Vec<Team> = Vec::new();
+        let mut created_teams: Vec<OW2Team> = Vec::new();
         for team in &self.extended_teams {
-            let team = Team::new(
+            let team = OW2Team::new(
                 team.0.clone(),
                 players[&team.1].clone(),
                 players[&team.2].clone(),
                 players[&team.3].clone(),
                 players[&team.4].clone(),
                 players[&team.5].clone(),
-                players[&team.6].clone(),
             );
             created_teams.push(team);
         }
@@ -202,14 +205,13 @@ impl Matchup {
     pub fn get_pretty_string(&self, players: &HashMap<u8, Player>) -> String {
         let mut s = String::new();
         s.push_str("-------------------------------------\n");
-        s.push_str("Matchup\n");
+        s.push_str("OW2Matchup\n");
         s.push_str(&format!("Average SR: {}\n", self.sr_average));
         s.push_str(&format!("Rating: {}\n\n", self.rating));
 
         let mut team_names = String::new();
         let mut team_sr_averages = String::new();
-        let mut tank_line_1 = String::new();
-        let mut tank_line_2 = String::new();
+        let mut tank_line = String::new();
         let mut damage_line_1 = String::new();
         let mut damage_line_2 = String::new();
         let mut support_line_1 = String::new();
@@ -217,46 +219,39 @@ impl Matchup {
 
         for team in self.extended_teams.clone() {
             team_names.push_str(&format!("{: >25}", &team.0));
-            team_sr_averages.push_str(&format!("{: >25.2}", &team.7));
-            tank_line_1.push_str(
+            team_sr_averages.push_str(&format!("{: >25.2}", &team.6));
+            tank_line.push_str(
                 &format!(
                     "{: >25}",
                     players.get(&team.1).unwrap().print_role(Position::Tank)
                 )
                 .as_str(),
             );
-            tank_line_2.push_str(
-                &format!(
-                    "{: >25}",
-                    players.get(&team.2).unwrap().print_role(Position::Tank)
-                )
-                .as_str(),
-            );
             damage_line_1.push_str(
                 &format!(
                     "{: >25}",
-                    players.get(&team.3).unwrap().print_role(Position::Damage)
+                    players.get(&team.2).unwrap().print_role(Position::Damage)
                 )
                 .as_str(),
             );
             damage_line_2.push_str(
                 &format!(
                     "{: >25}",
-                    players.get(&team.4).unwrap().print_role(Position::Damage)
+                    players.get(&team.3).unwrap().print_role(Position::Damage)
                 )
                 .as_str(),
             );
             support_line_1.push_str(
                 &format!(
                     "{: >25}",
-                    players.get(&team.5).unwrap().print_role(Position::Support)
+                    players.get(&team.4).unwrap().print_role(Position::Support)
                 )
                 .as_str(),
             );
             support_line_2.push_str(
                 &format!(
                     "{: >25}",
-                    players.get(&team.6).unwrap().print_role(Position::Support)
+                    players.get(&team.5).unwrap().print_role(Position::Support)
                 )
                 .as_str(),
             );
@@ -264,8 +259,7 @@ impl Matchup {
 
         s.push_str(&format!("         {}\n", team_names));
         s.push_str(&format!("         {}\n", team_sr_averages));
-        s.push_str(&format!("Tank:    {}\n", tank_line_1));
-        s.push_str(&format!("Tank:    {}\n", tank_line_2));
+        s.push_str(&format!("Tank:    {}\n", tank_line));
         s.push_str(&format!("DPS:     {}\n", damage_line_1));
         s.push_str(&format!("DPS:     {}\n", damage_line_2));
         s.push_str(&format!("Support: {}\n", support_line_1));

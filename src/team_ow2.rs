@@ -1,10 +1,10 @@
 use crate::Player;
 use crate::Position;
 
-// struct Team with parameters name, tank_1, tank_2, damage_1, damage_2, support_1, support_2
+// struct OW2Team with parameters name, tank_1, tank_2, damage_1, damage_2, support_1, support_2
 
 #[derive(Debug, Clone, PartialEq)]
-pub struct Team {
+pub struct OW2Team {
     pub name: String,
     pub tank: Option<Player>,
     pub damage_1: Option<Player>,
@@ -13,7 +13,7 @@ pub struct Team {
     pub support_2: Option<Player>,
 }
 
-impl Team {
+impl OW2Team {
     pub fn new(
         name: String,
         tank: Player,
@@ -21,8 +21,8 @@ impl Team {
         damage_2: Player,
         support_1: Player,
         support_2: Player,
-    ) -> Team {
-        Team {
+    ) -> OW2Team {
+        OW2Team {
             name,
             tank: Some(tank),
             damage_1: Some(damage_1),
@@ -57,8 +57,11 @@ impl Team {
                 }
             }
         }
-
-        average_sr as f32 / 2.0
+        if position == Position::Tank {
+            average_sr as f32
+        } else {
+            average_sr as f32 / 2.0
+        }
     }
 
     pub fn get_standard_deviation_of_role_duo(&self, position: Position) -> f32 {
@@ -68,15 +71,18 @@ impl Team {
         match position {
             Position::Tank => {
                 if let Some(tank) = &self.tank {
-                    standard_deviation += (tank_1.get_sr(Position::Tank) as f32 - avg_of_role).powf(2.0);
+                    standard_deviation +=
+                        (tank.get_sr(Position::Tank) as f32 - avg_of_role).powf(2.0);
                 }
             }
             Position::Damage => {
                 if let Some(damage_1) = &self.damage_1 {
-                    standard_deviation += (damage_1.get_sr(Position::Damage) as f32 - avg_of_role).powf(2.0);
+                    standard_deviation +=
+                        (damage_1.get_sr(Position::Damage) as f32 - avg_of_role).powf(2.0);
                 }
                 if let Some(damage_2) = &self.damage_2 {
-                    standard_deviation += (damage_2.get_sr(Position::Damage) as f32 - avg_of_role).powf(2.0);
+                    standard_deviation +=
+                        (damage_2.get_sr(Position::Damage) as f32 - avg_of_role).powf(2.0);
                 }
             }
             Position::Support => {
@@ -91,12 +97,11 @@ impl Team {
             }
         }
 
-
         (standard_deviation as f32).sqrt()
     }
 
     pub fn get_average_sr(&self) -> f32 {
-        let average_sr: f32 = (self.get_all_player_srs().iter().sum::<i16>() as f32) / 6.0;
+        let average_sr: f32 = (self.get_all_player_srs().iter().sum::<i16>() as f32) / 5.0;
         average_sr
     }
 
@@ -131,7 +136,7 @@ impl Team {
 
     pub fn _to_full_string(&self) -> String {
         let mut s = String::new();
-        s.push_str(&format!("Team {}\n", &self.name));
+        s.push_str(&format!("OW2Team {}\n", &self.name));
         s.push_str(&format!("Average SR {}\n", &self.get_average_sr()));
         s.push_str(&format!(
             "Standard deviation {}\n",
@@ -144,7 +149,7 @@ impl Team {
                 .as_ref()
                 .unwrap_or(&Player::create_dummy())
                 .get_sr(Position::Tank),
-            &self.tank_1.as_ref().unwrap_or(&Player::create_dummy()).name
+            &self.tank.as_ref().unwrap_or(&Player::create_dummy()).name
         ));
         s.push_str(&format!(
             "Damage:  {} - {}\n",
@@ -204,9 +209,9 @@ impl Team {
     pub fn _get_id(&self) -> String {
         let mut s = String::new();
         // Append tanks to s sorted by name
-        s.push_str(self.tank.name);
+        s.push_str(self.tank.as_ref().unwrap().name.as_str());
         s.push_str(",");
-        
+
         // Append damage to s sorted by name
         let mut damage = vec![
             self.damage_1.as_ref().unwrap().clone(),

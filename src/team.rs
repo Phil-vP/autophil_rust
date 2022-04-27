@@ -74,18 +74,22 @@ impl Team {
         match position {
             Position::Tank => {
                 if let Some(tank_1) = &self.tank_1 {
-                    standard_deviation += (tank_1.get_sr(Position::Tank) as f32 - avg_of_role).powf(2.0);
+                    standard_deviation +=
+                        (tank_1.get_sr(Position::Tank) as f32 - avg_of_role).powf(2.0);
                 }
                 if let Some(tank_2) = &self.tank_2 {
-                    standard_deviation += (tank_2.get_sr(Position::Tank) as f32 - avg_of_role).powf(2.0);
+                    standard_deviation +=
+                        (tank_2.get_sr(Position::Tank) as f32 - avg_of_role).powf(2.0);
                 }
             }
             Position::Damage => {
                 if let Some(damage_1) = &self.damage_1 {
-                    standard_deviation += (damage_1.get_sr(Position::Damage) as f32 - avg_of_role).powf(2.0);
+                    standard_deviation +=
+                        (damage_1.get_sr(Position::Damage) as f32 - avg_of_role).powf(2.0);
                 }
                 if let Some(damage_2) = &self.damage_2 {
-                    standard_deviation += (damage_2.get_sr(Position::Damage) as f32 - avg_of_role).powf(2.0);
+                    standard_deviation +=
+                        (damage_2.get_sr(Position::Damage) as f32 - avg_of_role).powf(2.0);
                 }
             }
             Position::Support => {
@@ -99,7 +103,6 @@ impl Team {
                 }
             }
         }
-
 
         (standard_deviation as f32).sqrt()
     }

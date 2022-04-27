@@ -5,9 +5,8 @@ use itertools::Itertools;
 use std::fs::File;
 use std::io::prelude::*;
 use std::io::{BufRead, BufReader};
-use std::thread;
 use std::sync::{Arc, Mutex};
-
+use std::thread;
 
 mod player;
 use player::Player;
@@ -15,11 +14,17 @@ use player::Player;
 mod team;
 use team::Team;
 
+mod team_ow2;
+use team_ow2::OW2Team;
+
 mod types;
 use types::Position;
 
 mod matchup;
 use matchup::Matchup;
+
+mod matchup_ow2;
+use matchup_ow2::OW2Matchup;
 
 use std::collections::HashMap;
 
@@ -28,31 +33,41 @@ fn main() {
 
     let number_of_teams: usize = player_map.len() / 6;
 
-    let duos = make_duos(&player_map);
+    let ow_2 = false;
 
-    let matchups = create_matchups(&duos, number_of_teams);
+    let number_of_printed_scrims = 10;
 
-    println!("There are {} possible matchups", matchups.len());
+    let duos = make_duos(&player_map, ow_2);
 
-    let parallel = true;
+    if ow_2 {
+        let matchups = create_ow2_matchups(&duos, number_of_teams);
+        println!("There are {} possible matchups", matchups.len());
+        let scrims = create_ow2_scrims(&player_map, matchups, number_of_teams);
 
-    let scrims = if parallel {
-        let matchup_arc = Arc::new(matchups);
-        create_scrims_parallel(&player_map, matchup_arc, number_of_teams)
-    }
-    else{
-        create_scrims(&player_map, &matchups, number_of_teams)
+        // output the first 10 elements of scrims into a file called "scrims.txt"
+        let mut file = File::create("scrims.txt").unwrap();
+        let mut i: u8 = 0;
+        for scrim in scrims.iter().take(number_of_printed_scrims) {
+            // scrim.pretty_print(&player_map);
+            file.write(format!("SCRIM {}:\n", (65 + i) as char).as_bytes())
+                .unwrap();
+            file.write_all(scrim.get_pretty_string(&player_map).as_bytes())
+                .unwrap();
+            i += 1;
+        }
+    } else {
+        let matchups = create_matchups(&duos, number_of_teams);
+        println!("There are {} possible matchups", matchups.len());
+        let scrims = create_scrims(&player_map, matchups, number_of_teams);
+
+        // output the first 10 elements of scrims into a file called "scrims.txt"
+        let mut file = File::create("scrims.txt").unwrap();
+        for scrim in scrims.iter().take(number_of_printed_scrims) {
+            // scrim.pretty_print(&player_map);
+            file.write_all(scrim.get_pretty_string(&player_map).as_bytes())
+                .unwrap();
+        }
     };
-
-
-
-    // output the first 10 elements of scrims into a file called "scrims.txt"
-    let mut file = File::create("scrims.txt").unwrap();
-    for scrim in scrims.iter().take(1) {
-        // scrim.pretty_print(&player_map);
-        file.write_all(scrim.get_extended_string(&player_map).as_bytes())
-            .unwrap();
-    }
 }
 
 // Read all players from players.txt
@@ -79,69 +94,11 @@ fn read_players() -> HashMap<u8, Player> {
 }
 
 fn create_scrims(
-    players: &HashMap<u8, Player>,
-    matchups: &Vec<(Vec<(u8, u8)>, Vec<(u8, u8)>, Vec<(u8, u8)>)>,
-    number_of_teams: usize,
-) -> Vec<Matchup> {
-    let mut scrims: Vec<Matchup> = Vec::new();
-
-    let mut team_names: Vec<String> = vec!["Naughty Tomatoes".to_string()];
-
-    for _ in team_names.len()..number_of_teams {
-        let team_name = format!("Team {}", team_names.len() + 1);
-        team_names.push(team_name);
-    }
-
-    // team_names.reverse();
-
-    println!("{:?}", team_names);
-
-    let scrim_progress_bar = ProgressBar::new(matchups.len() as u64);
-    scrim_progress_bar.reset();
-    scrim_progress_bar.inc(1);
-
-    for possible_matchup in matchups {
-        scrim_progress_bar.inc(1);
-
-        let tank_vec = &possible_matchup.0;
-        let damage_vec = &possible_matchup.1;
-        let support_vec = &possible_matchup.2;
-
-        let dps_iter = (0..number_of_teams).permutations(number_of_teams);
-        let supp_iter = (0..number_of_teams).permutations(number_of_teams);
-
-        for dps_perm in dps_iter {
-            for supp_perm in supp_iter.clone() {
-                let mut matchup_teams: Vec<(String, u8, u8, u8, u8, u8, u8)> = Vec::new();
-                for i in 0..number_of_teams {
-                    matchup_teams.push((
-                        team_names[i].clone(),
-                        tank_vec.get(i).unwrap().0,
-                        tank_vec.get(i).unwrap().1,
-                        damage_vec.get(dps_perm[i]).unwrap().0,
-                        damage_vec.get(dps_perm[i]).unwrap().1,
-                        support_vec.get(supp_perm[i]).unwrap().0,
-                        support_vec.get(supp_perm[i]).unwrap().1,
-                    ));
-                }
-                let matchup = Matchup::new(matchup_teams, players);
-                scrims.push(matchup);
-            }
-        }
-    }
-
-    scrims.sort_by(|a, b| a.rating.partial_cmp(&b.rating).unwrap());
-
-    scrims
-}
-
-
-fn create_scrims_parallel(
     players_raw: &HashMap<u8, Player>,
-    matchups: Arc<Vec<(Vec<(u8, u8)>, Vec<(u8, u8)>, Vec<(u8, u8)>)>>,
+    matchups: Vec<(Vec<(u8, u8)>, Vec<(u8, u8)>, Vec<(u8, u8)>)>,
     number_of_teams: usize,
 ) -> Vec<Matchup> {
-    let scrims: Vec<Matchup> = Vec::new();
+    let scrims: Vec<Vec<Matchup>> = Vec::new();
 
     let mut team_names_raw: Vec<String> = vec!["Naughty Tomatoes".to_string()];
 
@@ -154,8 +111,6 @@ fn create_scrims_parallel(
 
     println!("{:?}", team_names_raw);
 
-    // let matchups = matchup_arc;
-
     let number_of_matchups = matchups.len();
 
     let scrim_progress_bar = ProgressBar::new(number_of_matchups as u64);
@@ -163,29 +118,28 @@ fn create_scrims_parallel(
 
     let number_of_threads = 8;
 
-    let _length = matchups.len();
+    let chunk_size = number_of_matchups / number_of_threads;
 
-    let chunk_length = number_of_matchups / number_of_threads;
+    let matchup_chunks = matchups.into_iter().chunks(chunk_size);
 
-    // let matchups_split = matchups.chunks(number_of_matchups / number_of_threads);
-
-    
     let mut handles = vec![];
 
     let mutex = Mutex::new((scrims, scrim_progress_bar));
     let arc = Arc::new(mutex);
 
-    for matchup_chunk in matchups.chunks(chunk_length) {
+    for matchup_chunk in matchup_chunks.into_iter() {
+        let matchup_chunk: Vec<(Vec<(u8, u8)>, Vec<(u8, u8)>, Vec<(u8, u8)>)> =
+            matchup_chunk.collect();
+        
 
         let cloned_arc = Arc::clone(&arc);
         let players = players_raw.clone();
         let team_names = team_names_raw.clone();
 
         let handle = thread::spawn(move || {
+            let mut all_scrims: Vec<Matchup> = Vec::new();
+            let mut counter = 0;
             for possible_matchup in matchup_chunk {
-
-                let mut local_scrims: Vec<Matchup> = Vec::new();
-
                 let tank_vec = &possible_matchup.0;
                 let damage_vec = &possible_matchup.1;
                 let support_vec = &possible_matchup.2;
@@ -208,31 +162,40 @@ fn create_scrims_parallel(
                             ));
                         }
                         let matchup = Matchup::new(matchup_teams, &players);
-                        local_scrims.push(matchup);
+                        all_scrims.push(matchup);
                     }
                 }
-                let mut tupel = cloned_arc.lock().unwrap();
-                let scrims_shared = &mut tupel.0;
-                scrims_shared.append(&mut local_scrims);
-                let scrim_progress_bar_shared = &mut tupel.1;
-                scrim_progress_bar_shared.inc(1);
+                counter += 1;
+                if (counter % 1000) == 0 {
+                    cloned_arc.lock().unwrap().1.inc(1000);
+                }
             }
+            // println!("Adding {} scrims to the shared vector", all_scrims.len());
+            let all_scrims_vector = &mut cloned_arc.lock().unwrap().0;
+            all_scrims_vector.push(all_scrims);
         });
         handles.push(handle);
     }
-    
+
     for handle in handles {
         handle.join().unwrap();
     }
 
-    let mut scrims = arc.lock().unwrap().0.clone();
+    let scrim_vector = arc.lock().unwrap().0.clone();
+    let mut scrims: Vec<Matchup> = Vec::new();
+    for mut scrim_chunk in scrim_vector {
+        scrims.append(&mut scrim_chunk);
+    }
+
+    arc.lock().unwrap().1.finish();
+
+    println!("\nTotal number of scrims: {}", scrims.len());
     scrims.sort_by(|a, b| a.rating.partial_cmp(&b.rating).unwrap());
 
     scrims
 }
 
-
-fn make_duos(players: &HashMap<u8, Player>) -> HashMap<Position, Vec<(u8, u8)>> {
+fn make_duos(players: &HashMap<u8, Player>, ow_2: bool) -> HashMap<Position, Vec<(u8, u8)>> {
     let position_vec = vec![Position::Tank, Position::Damage, Position::Support];
     let mut duos: HashMap<Position, Vec<(u8, u8)>> = HashMap::new();
 
@@ -245,11 +208,17 @@ fn make_duos(players: &HashMap<u8, Player>) -> HashMap<Position, Vec<(u8, u8)>> 
                 println!("{}: {}", id, player.name);
             }
         }
-        let tuples: Vec<(u8, u8)> = role_list
-            .iter()
-            .combinations(2)
-            .map(|pair| (pair[0].0, pair[1].0))
-            .collect();
+
+        let tuples: Vec<(u8, u8)> = if ow_2 && position == Position::Tank {
+            // collect the role list into a list of tuples with (id, 0)
+            role_list.iter().map(|(id, _)| (*id, 0)).collect()
+        } else {
+            role_list
+                .iter()
+                .combinations(2)
+                .map(|pair| (pair[0].0, pair[1].0))
+                .collect()
+        };
         // println!("Position: {:?}, number of pairs: {}", position, tuples.len());
         // for t in &tuples {
         //     println!("({}, {})", players.get(&t.0).unwrap().name, players.get(&t.1).unwrap().name);
@@ -298,11 +267,9 @@ fn create_matchups(
         for combination in &combinations_vec {
             let mut clean_combination: Vec<(u8, u8)> = Vec::new();
             for player_vec in combination {
-                // print!("({}, {}); ", players.get(&player_vec.0).unwrap().name, players.get(&player_vec.1).unwrap().name);
                 clean_combination.push((player_vec.0, player_vec.1));
             }
             clean_combinations.push(clean_combination);
-            // println!("");
         }
         println!();
 
@@ -310,12 +277,7 @@ fn create_matchups(
     }
 
     let number_of_tank_combinations = combination_map[&Position::Tank].len();
-    // let number_of_damage_combinations = combination_map[&Position::Damage].len();
-    // let number_of_support_combinations = combination_map[&Position::Support].len();
 
-    let tank_progress_bar = ProgressBar::new(number_of_tank_combinations as u64);
-    // let damage_progress_bar = ProgressBar::new(number_of_damage_combinations as u64);
-    // let support_progress_bar = ProgressBar::new(number_of_support_combinations as u64);
 
     let mut all_dps_supp_combinations: Vec<(Vec<(u8, u8)>, Vec<(u8, u8)>)> = Vec::new();
 
@@ -352,25 +314,264 @@ fn create_matchups(
             let mut dps_supp_combination: (Vec<(u8, u8)>, Vec<(u8, u8)>) = (Vec::new(), Vec::new());
             dps_supp_combination.0 = damage_pairs_this_matchup.clone();
             dps_supp_combination.1 = support_pairs_this_matchup.clone();
-            // for duo in &dps_supp_combination {
-            //     println!("({}, {})", duo[0].name, duo[1].name);
-            // }
             all_dps_supp_combinations.push(dps_supp_combination);
         }
     }
 
+    println!("Starting to combine the tank matchups");
+
+    let matchup_vec: Vec<Vec<(Vec<(u8, u8)>, Vec<(u8, u8)>, Vec<(u8, u8)>)>> = Vec::new();
+    //                          | Tank Duos      DPS Duos       Support Duos  |
+    //                          +---------------------------------------------+
+    //                          |  One Matchup                                |
+
+    let tank_progress_bar = ProgressBar::new(number_of_tank_combinations as u64);
+    tank_progress_bar.reset();
+
+    let number_of_threads = 8;
+
+    let chunk_size = number_of_tank_combinations / number_of_threads;
+
+    let tank_chunks = &combination_map[&Position::Tank].clone().into_iter().chunks(chunk_size);
+
+    let mut handles = vec![];
+
+    let mutex = Mutex::new((matchup_vec, tank_progress_bar));
+    let arc = Arc::new(mutex);
+
+    for tank_chunk in tank_chunks.into_iter() {
+        let tank_chunk: Vec<Vec<(u8, u8)>> = tank_chunk.collect();
+
+        let dps_supp_combinations = all_dps_supp_combinations.clone();
+        
+        // println!("length of matchup chunk: {}", matchup_chunk.len());
+
+        let cloned_arc = Arc::clone(&arc);
+
+        let handle = thread::spawn(move || {
+            let mut matchups_this_thread: Vec<(Vec<(u8, u8)>, Vec<(u8, u8)>, Vec<(u8, u8)>)> = Vec::new();
+            let mut counter = 0;
+
+            for tank_pairs_in_this_matchup in tank_chunk {
+                let mut tank_names: Vec<u8> = Vec::new();
+                for pair in &tank_pairs_in_this_matchup {
+                    tank_names.push(pair.0);
+                    tank_names.push(pair.1);
+                }
+
+                'dps_support_loop: for dps_support_pairs in &dps_supp_combinations {
+                    let mut names_in_this_matchup = tank_names.clone();
+                    // Add the DPS pairs
+                    for pair in &dps_support_pairs.0 {
+                        names_in_this_matchup.push(pair.0);
+                        names_in_this_matchup.push(pair.1);
+                    }
+                    // Add the Support pairs
+                    for pair in &dps_support_pairs.1 {
+                        names_in_this_matchup.push(pair.0);
+                        names_in_this_matchup.push(pair.1);
+                    }
+
+                    // Check if any names are double
+                    if names_in_this_matchup.iter().unique().count() != names_in_this_matchup.len() {
+                        continue 'dps_support_loop;
+                    }
+
+                    // No names are double, this is a possibly valid matchup
+                    let dps_pairs: Vec<(u8, u8)> = dps_support_pairs.0.clone();
+                    let support_pairs: Vec<(u8, u8)> = dps_support_pairs.1.clone();
+
+                    let full_matchup: (Vec<(u8, u8)>, Vec<(u8, u8)>, Vec<(u8, u8)>) =
+                        (tank_pairs_in_this_matchup.clone(), dps_pairs, support_pairs);
+
+                    matchups_this_thread.push(full_matchup);
+                }
+                counter += 1;
+                if (counter % 10) == 0 {
+                    cloned_arc.lock().unwrap().1.inc(10);
+                }
+            }
+            cloned_arc.lock().unwrap().0.push(matchups_this_thread);
+        });
+        handles.push(handle);
+    }
+
+    for handle in handles {
+        handle.join().unwrap();
+    }
+
+    let matchup_vector = arc.lock().unwrap().0.clone();
     let mut matchups: Vec<(Vec<(u8, u8)>, Vec<(u8, u8)>, Vec<(u8, u8)>)> = Vec::new();
-    //                   | Tank Duos      DPS Duos       Support Duos  |
-    //                   +---------------------------------------------+
-    //                   |  One Matchup                                |
+    for mut matchup_chunk in matchup_vector {
+        matchups.append(&mut matchup_chunk);
+    }
+    
+
+    // println!("There are {} possible matchups", matchups.len());
+
+    matchups
+}
+
+fn create_ow2_scrims(
+    players: &HashMap<u8, Player>,
+    matchups: Vec<(Vec<u8>, Vec<(u8, u8)>, Vec<(u8, u8)>)>,
+    number_of_teams: usize,
+) -> Vec<OW2Matchup> {
+    let mut scrims: Vec<OW2Matchup> = Vec::new();
+
+    let mut team_names: Vec<String> = vec!["Naughty Tomatoes".to_string()];
+
+    for _ in team_names.len()..number_of_teams {
+        let team_name = format!("Team {}", team_names.len() + 1);
+        team_names.push(team_name);
+    }
+
+    // team_names.reverse();
+
+    println!("{:?}", team_names);
+
+    let scrim_progress_bar = ProgressBar::new(matchups.len() as u64);
+    scrim_progress_bar.reset();
+
+    for possible_matchup in matchups {
+        scrim_progress_bar.inc(1);
+
+        let tank_vec = &possible_matchup.0;
+        let damage_vec = &possible_matchup.1;
+        let support_vec = &possible_matchup.2;
+
+        let dps_iter = (0..number_of_teams).permutations(number_of_teams);
+        let supp_iter = (0..number_of_teams).permutations(number_of_teams);
+
+        for dps_perm in dps_iter {
+            for supp_perm in supp_iter.clone() {
+                let mut matchup_teams: Vec<(String, u8, u8, u8, u8, u8)> = Vec::new();
+                for i in 0..number_of_teams {
+                    matchup_teams.push((
+                        team_names[i].clone(),
+                        *tank_vec.get(i).unwrap(),
+                        damage_vec.get(dps_perm[i]).unwrap().0,
+                        damage_vec.get(dps_perm[i]).unwrap().1,
+                        support_vec.get(supp_perm[i]).unwrap().0,
+                        support_vec.get(supp_perm[i]).unwrap().1,
+                    ));
+                }
+                let matchup = OW2Matchup::new(matchup_teams, players);
+                scrims.push(matchup);
+            }
+        }
+    }
+
+    scrims.sort_by(|a, b| a.rating.partial_cmp(&b.rating).unwrap());
+
+    scrim_progress_bar.finish();
+
+    scrims
+}
+
+fn create_ow2_matchups(
+    player_duos: &HashMap<Position, Vec<(u8, u8)>>,
+    number_of_teams: usize,
+) -> Vec<(Vec<u8>, Vec<(u8, u8)>, Vec<(u8, u8)>)> {
+    let position_vec = vec![Position::Tank, Position::Damage, Position::Support];
+
+    println!("Number of teams: {}", number_of_teams);
+
+    let mut combination_map: HashMap<Position, Vec<Vec<(u8, u8)>>> = HashMap::new();
+
+    for position in &position_vec {
+        let combinations_crowded = player_duos[&position]
+            .iter()
+            .combinations(number_of_teams as usize);
+        println!(
+            "There are {} possible {:?} combinations",
+            combinations_crowded.clone().count(),
+            position
+        );
+
+        let mut combinations_vec: Vec<Vec<&(u8, u8)>> = combinations_crowded.collect();
+
+        combinations_vec.retain(|c| {
+            let mut player_ids: Vec<u8> = Vec::new();
+            for player in c {
+                player_ids.push(player.0);
+                player_ids.push(player.1);
+            }
+            position == &Position::Tank || (player_ids.iter().unique().count() == player_ids.len())
+        });
+
+        println!("{} of those are unique", combinations_vec.len());
+
+        let mut clean_combinations: Vec<Vec<(u8, u8)>> = Vec::new();
+
+        for combination in &combinations_vec {
+            let mut clean_combination: Vec<(u8, u8)> = Vec::new();
+            for player_vec in combination {
+                clean_combination.push((player_vec.0, player_vec.1));
+            }
+            clean_combinations.push(clean_combination);
+        }
+        println!();
+
+        combination_map.insert(*position, clean_combinations);
+    }
+
+    let number_of_tank_combinations = combination_map[&Position::Tank].len();
+
+    let tank_progress_bar = ProgressBar::new(number_of_tank_combinations as u64);
+
+    let mut all_dps_supp_combinations: Vec<(Vec<(u8, u8)>, Vec<(u8, u8)>)> = Vec::new();
+
+    // First calculating all possible Damage & Support pairings
+    'damage_outer_loop: for damage_pairs_this_matchup in &combination_map[&Position::Damage] {
+        let mut dps_players_seen_this_run: Vec<u8> = Vec::new();
+        for dps_duo in damage_pairs_this_matchup {
+            dps_players_seen_this_run.push(dps_duo.0);
+            dps_players_seen_this_run.push(dps_duo.1);
+        }
+        // Check if all names are unique
+        if dps_players_seen_this_run.iter().unique().count() != dps_players_seen_this_run.len() {
+            continue 'damage_outer_loop;
+        }
+        // All players are unique so far, we can now pair these with Support players
+        'support_inner_loop: for support_pairs_this_matchup in &combination_map[&Position::Support]
+        {
+            let mut dps_and_support_players_seen_this_run = dps_players_seen_this_run.clone();
+            for support_duo in support_pairs_this_matchup {
+                dps_and_support_players_seen_this_run.push(support_duo.0);
+                dps_and_support_players_seen_this_run.push(support_duo.1);
+            }
+            // Check if all names are unique
+            if dps_and_support_players_seen_this_run
+                .iter()
+                .unique()
+                .count()
+                != dps_and_support_players_seen_this_run.len()
+            {
+                continue 'support_inner_loop;
+            }
+
+            // Looks like a possible tank / support matchup has been found, it can now be created and appended to the list of all combinations
+            let mut dps_supp_combination: (Vec<(u8, u8)>, Vec<(u8, u8)>) = (Vec::new(), Vec::new());
+            dps_supp_combination.0 = damage_pairs_this_matchup.clone();
+            dps_supp_combination.1 = support_pairs_this_matchup.clone();
+            all_dps_supp_combinations.push(dps_supp_combination);
+        }
+    }
+
+    let mut matchups: Vec<(Vec<u8>, Vec<(u8, u8)>, Vec<(u8, u8)>)> = Vec::new();
+    //                   | Tanks    DPS Duos       Support Duos  |
+    //                   +---------------------------------------+
+    //                   |  One Matchup                          |
 
     tank_progress_bar.reset();
     for tank_pairs_in_this_matchup in &combination_map[&Position::Tank] {
         tank_progress_bar.inc(1);
         let mut tank_names: Vec<u8> = Vec::new();
+        let mut tanks_this_matchup: Vec<u8> = Vec::new();
         for pair in tank_pairs_in_this_matchup {
             tank_names.push(pair.0);
-            tank_names.push(pair.1);
+            tanks_this_matchup.push(pair.0);
         }
 
         'dps_support_loop: for dps_support_pairs in &all_dps_supp_combinations {
@@ -395,34 +596,16 @@ fn create_matchups(
             let dps_pairs: Vec<(u8, u8)> = dps_support_pairs.0.clone();
             let support_pairs: Vec<(u8, u8)> = dps_support_pairs.1.clone();
 
-            let full_matchup: (Vec<(u8, u8)>, Vec<(u8, u8)>, Vec<(u8, u8)>) =
-                (tank_pairs_in_this_matchup.clone(), dps_pairs, support_pairs);
+            let full_matchup: (Vec<u8>, Vec<(u8, u8)>, Vec<(u8, u8)>) =
+                (tanks_this_matchup.clone(), dps_pairs, support_pairs);
 
             matchups.push(full_matchup);
         }
     }
 
-    println!("There are {} possible matchups", matchups.len());
+    tank_progress_bar.finish();
 
-    /*
-    for matchup in &matchups {
-        println!("Tank: ");
-        for duo in &matchup.0 {
-            print!("({}, {}); ", players.get(&duo.0).unwrap().name, players.get(&duo.1).unwrap().name);
-        }
-        println!("\nDPS: ");
-        for duo in &matchup.1 {
-            print!("({}, {}); ", players.get(&duo.0).unwrap().name, players.get(&duo.1).unwrap().name);
-        }
-        println!("\nSupport: ");
-        for duo in &matchup.2 {
-            print!("({}, {}); ", players.get(&duo.0).unwrap().name, players.get(&duo.1).unwrap().name);
-        }
-        println!("\n");
-    }
-    */
+    // println!("There are {} possible matchups", matchups.len());
 
     matchups
-
-    // possible_matchups
 }
