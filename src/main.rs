@@ -28,13 +28,14 @@ mod matchup_ow2;
 use matchup_ow2::OW2Matchup;
 
 use std::collections::HashMap;
+use std::collections::HashSet;
+use std::iter::FromIterator;
+
 
 fn main() {
     let player_map: HashMap<u8, Player> = read_players();
 
-    let number_of_teams: usize = player_map.len() / 6;
-
-    let ow_2 = false;
+    let ow_2 = true;
 
     let number_of_printed_scrims = 10;
 
@@ -42,7 +43,18 @@ fn main() {
 
     let duos = make_duos(&player_map, ow_2);
 
-    let mut team_names: Vec<String> = vec!["Naughty Tomatoes".to_string()];
+    let mut team_names: Vec<String> = vec![
+        "Fighting Foxes".to_string(),
+        "Dancing Dragons".to_string(),
+        "Iron Wolves".to_string(),
+        "Strike Team 404".to_string(),
+        "Knightly Kittens".to_string(),
+        "Suwon Tigers".to_string(),
+    ];
+
+    let number_of_teams: usize = player_map.len() / if ow_2 { 5 } else { 6 };
+
+    let team_permutations = get_permutations(6);
 
     for _ in team_names.len()..number_of_teams {
         let team_name = format!("Team {}", team_names.len() + 1);
@@ -58,6 +70,7 @@ fn main() {
             number_of_teams,
             team_names,
             number_of_threads,
+            team_permutations
         );
 
         let mut file = File::create("scrims.txt").unwrap();
@@ -92,6 +105,65 @@ fn main() {
     };
 }
 
+fn get_permutations(number_of_teams: usize) -> Vec<Vec<Vec<usize>>> {
+    let uneven = if number_of_teams % 2 != 0 {
+        true
+    } else {
+        false
+    };
+
+    let last_chunk = number_of_teams / 2;
+
+    let perms = (1..=number_of_teams).permutations(number_of_teams);
+    let mut perms_seen: Vec<String> = Vec::new();
+    let mut perm_vec: Vec<Vec<Vec<usize>>> = Vec::new();
+    for p in perms {
+        let chunks = p.into_iter().chunks(2);
+        let mut sorted_vecs: Vec<Vec<usize>> = Vec::new();
+        let mut i = 0;
+        let mut last_num: usize = 0;
+        for c in chunks.into_iter() {
+            let mut vec = c.into_iter().collect::<Vec<usize>>();
+            if uneven && i == last_chunk {
+                last_num = vec.pop().unwrap();
+                break;
+            }
+            vec.sort();
+            sorted_vecs.push(vec);
+            i += 1;
+        }
+
+        if uneven {
+            let last_index = sorted_vecs.len() - 1;
+            let last = &mut sorted_vecs[last_index];
+            last.push(last_num);
+            last.sort();
+        }
+        
+        let mut perm_str: String = String::new();
+        for sorted_vec in &sorted_vecs {
+            perm_str.push_str(
+                &sorted_vec
+                    .into_iter()
+                    .map(|i| i.to_string())
+                    .collect::<String>(),
+            );
+        }
+        if perms_seen.contains(&perm_str) {
+            continue;
+        }
+        perms_seen.push(perm_str.clone());
+
+        let mut perm_vec_i: Vec<Vec<usize>> = Vec::new();
+        for sorted_vec in sorted_vecs {
+            perm_vec_i.push(sorted_vec);
+        }
+        
+        perm_vec.push(perm_vec_i);
+    }
+    perm_vec
+}
+
 // Read all players from players.txt
 fn read_players() -> HashMap<u8, Player> {
     // open file players.txt and read all lines that don't start with #
@@ -124,6 +196,8 @@ fn create_scrims(
 ) -> Vec<Matchup> {
     let scrims: Vec<Vec<Matchup>> = Vec::new();
 
+    let all_player_vec: Vec<u8> = players_raw.keys().cloned().collect();
+
     println!("{:?}", team_names_raw);
 
     let number_of_matchups = matchups.len();
@@ -131,7 +205,11 @@ fn create_scrims(
     let scrim_progress_bar = ProgressBar::new(number_of_matchups as u64);
     scrim_progress_bar.reset();
 
-    let chunk_size = number_of_matchups / number_of_threads;
+    let mut chunk_size = number_of_matchups / number_of_threads;
+
+    if chunk_size == 0 {
+        chunk_size = 1;
+    }
 
     let matchup_chunks = matchups.into_iter().chunks(chunk_size);
 
@@ -144,6 +222,7 @@ fn create_scrims(
         let matchup_chunk: Vec<(Vec<(u8, u8)>, Vec<(u8, u8)>, Vec<(u8, u8)>)> =
             matchup_chunk.collect();
 
+        let all_player_set: HashSet<u8> = HashSet::from_iter(all_player_vec.clone().into_iter());
         let cloned_arc = Arc::clone(&arc);
         let players = players_raw.clone();
         let team_names = team_names_raw.clone();
@@ -153,6 +232,7 @@ fn create_scrims(
         let handle = thread::spawn(move || {
             let mut all_scrims: Vec<Matchup> = Vec::new();
             let mut counter = 0;
+
             for possible_matchup in matchup_chunk {
                 let tank_vec = &possible_matchup.0;
                 let damage_vec = &possible_matchup.1;
@@ -175,9 +255,34 @@ fn create_scrims(
                                 support_vec.get(supp_perm[i]).unwrap().1,
                             ));
                         }
-                        let matchup = Matchup::new(matchup_teams, &players);
+                        let m_clone = matchup_teams.clone();
+                        let mut matchup = Matchup::new(matchup_teams, &players);
                         let rating = matchup.rating;
                         if rating < (best_rating as f32 * 1.1) as i16 {
+                            let mut players_playing: Vec<u8> = Vec::new();
+                            
+                            for m_team in m_clone {
+                                players_playing.push(m_team.1);
+                                players_playing.push(m_team.2);
+                                players_playing.push(m_team.3);
+                                players_playing.push(m_team.4);
+                                players_playing.push(m_team.5);
+                                players_playing.push(m_team.6);
+                            }
+                            
+                            // println!("all_player_set: {:?}", all_player_set);
+                        
+                            let playing_players_set: HashSet<u8> = HashSet::from_iter(players_playing.into_iter());
+                            // println!("playing_players_set: {:?}", playing_players_set);
+
+                            let players_on_bench: HashSet<_> = all_player_set.difference(&playing_players_set).collect();
+                            // println!("players_on_bench: {:?}", players_on_bench);
+                            // println!();
+
+                            let players_left_over_vec: Vec<_> = players_on_bench.into_iter().cloned().collect();
+
+                            matchup.players_left_over = players_left_over_vec;
+
                             all_scrims.push(matchup);
                             best_rating = cmp::min(rating, best_rating);
                         }
@@ -346,7 +451,11 @@ fn create_matchups(
     let tank_progress_bar = ProgressBar::new(number_of_tank_combinations as u64);
     tank_progress_bar.reset();
 
-    let chunk_size = number_of_tank_combinations / number_of_threads;
+    let mut chunk_size = number_of_tank_combinations / number_of_threads;
+
+    if chunk_size == 0 {
+        chunk_size = 1;
+    }
 
     let tank_chunks = &combination_map[&Position::Tank]
         .clone()
@@ -438,6 +547,7 @@ fn create_ow2_scrims(
     number_of_teams: usize,
     team_names_raw: Vec<String>,
     number_of_threads: usize,
+    team_permutations: Vec<Vec<Vec<usize>>>
 ) -> Vec<OW2Matchup> {
     let scrims: Vec<Vec<OW2Matchup>> = Vec::new();
 
@@ -448,7 +558,11 @@ fn create_ow2_scrims(
     let scrim_progress_bar = ProgressBar::new(number_of_matchups as u64);
     scrim_progress_bar.reset();
 
-    let chunk_size = number_of_matchups / number_of_threads;
+    let mut chunk_size = number_of_matchups / number_of_threads;
+
+    if chunk_size == 0 {
+        chunk_size = 1;
+    }
 
     let matchup_chunks = matchups.into_iter().chunks(chunk_size);
 
@@ -463,6 +577,7 @@ fn create_ow2_scrims(
         let cloned_arc = Arc::clone(&arc);
         let players = players_raw.clone();
         let team_names = team_names_raw.clone();
+        let team_perms = team_permutations.clone();
 
         let handle = thread::spawn(move || {
             let mut all_scrims: Vec<OW2Matchup> = Vec::new();
@@ -491,11 +606,32 @@ fn create_ow2_scrims(
                                 support_vec.get(supp_perm[i]).unwrap().1,
                             ));
                         }
-                        let matchup = OW2Matchup::new(matchup_teams, &players);
-                        let rating = matchup.rating;
-                        if rating < (best_rating as f32 * 1.1) as i16 {
-                            all_scrims.push(matchup);
-                            best_rating = cmp::min(rating, best_rating);
+                        if number_of_teams <= 3 {
+                            let matchup = OW2Matchup::new(matchup_teams, &players);
+                            let rating = matchup.rating;
+                            if rating < (best_rating as f32) as i16 {
+                                all_scrims.push(matchup);
+                                best_rating = cmp::min(rating, best_rating);
+                            }
+                        } else {
+                            for permutation in &team_perms {
+                                let mut rating = 0;
+                                let mut this_permutation_matchups: Vec<(String, u8, u8, u8, u8, u8)> = Vec::new();
+
+                                for perm in permutation {
+                                    let mut this_matchup_teams: Vec<(String, u8, u8, u8, u8, u8)> = Vec::new();
+                                    for i in perm {
+                                        this_matchup_teams.push(matchup_teams[*i-1].clone());
+                                        this_permutation_matchups.push(matchup_teams[*i-1].clone());
+                                    }
+                                    let matchup = OW2Matchup::new(this_matchup_teams, &players);
+                                    rating += matchup.rating;
+                                }
+                                if rating < (best_rating as f32) as i16 {
+                                    all_scrims.push(OW2Matchup::new(matchup_teams.clone(), &players));
+                                    best_rating = cmp::min(rating, best_rating);
+                                }
+                            }
                         }
                     }
                 }
@@ -531,7 +667,7 @@ fn create_ow2_scrims(
 fn create_ow2_matchups(
     player_duos: &HashMap<Position, Vec<(u8, u8)>>,
     number_of_teams: usize,
-    number_of_threads: usize,
+    number_of_threads: usize
 ) -> Vec<(Vec<u8>, Vec<(u8, u8)>, Vec<(u8, u8)>)> {
     let position_vec = vec![Position::Tank, Position::Damage, Position::Support];
 
@@ -580,6 +716,7 @@ fn create_ow2_matchups(
 
     let mut all_dps_supp_combinations: Vec<(Vec<(u8, u8)>, Vec<(u8, u8)>)> = Vec::new();
 
+
     // First calculating all possible Damage & Support pairings
     'damage_outer_loop: for damage_pairs_this_matchup in &combination_map[&Position::Damage] {
         let mut dps_players_seen_this_run: Vec<u8> = Vec::new();
@@ -617,6 +754,7 @@ fn create_ow2_matchups(
         }
     }
 
+
     let matchup_vec: Vec<Vec<(Vec<u8>, Vec<(u8, u8)>, Vec<(u8, u8)>)>> = Vec::new();
     //                      | Tanks    DPS Duos       Support Duos  |
     //                      +---------------------------------------+
@@ -625,13 +763,19 @@ fn create_ow2_matchups(
     let tank_progress_bar = ProgressBar::new(number_of_tank_combinations as u64);
     tank_progress_bar.reset();
 
-    let chunk_size = number_of_tank_combinations / number_of_threads;
+    let mut chunk_size = number_of_tank_combinations / number_of_threads;
+
+    if chunk_size == 0 {
+        chunk_size = 1;
+    }
 
     // Copy all tanks from combination_map into a Vector, only retaining the first player of each duo
     let clean_tank_vec: Vec<Vec<u8>> = combination_map[&Position::Tank]
         .iter()
         .map(|c| c.iter().map(|d| d.0).collect())
         .collect();
+
+    println!("Chunk size: {}", chunk_size);
 
     let tank_chunks = clean_tank_vec.into_iter().chunks(chunk_size);
 

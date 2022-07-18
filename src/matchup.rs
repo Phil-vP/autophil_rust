@@ -18,6 +18,7 @@ pub struct Matchup {
     pub standard_deviations: [f32; 3],
     pub average_deviations: [f32; 3],
     pub rating: i16,
+    pub players_left_over: Vec<u8>,
 }
 
 impl Matchup {
@@ -99,7 +100,7 @@ impl Matchup {
             }
         }
 
-        let rating = (sum_of_all_dev_diffs + sum_of_all_avg_diffs) as i16;
+        let rating = (sum_of_all_dev_diffs + sum_of_all_avg_diffs*5.0) as i16;
 
         Matchup {
             kind,
@@ -109,6 +110,7 @@ impl Matchup {
             standard_deviations,
             average_deviations,
             rating,
+            players_left_over: Vec::new(),
         }
     }
 
@@ -262,6 +264,25 @@ impl Matchup {
             );
         }
 
+        let mut leftover_players = String::new();
+
+        if self.players_left_over.len() == 0 {
+            leftover_players.push_str("No players are left out");
+        }
+        else{
+            leftover_players.push_str(&format!("Leftover players: {}", players.get(self.players_left_over.first().unwrap()).unwrap().name));
+            
+            let mut skipped = false;
+            for player_num in &self.players_left_over {
+                if !skipped { 
+                    skipped = true;
+                    continue;
+                };
+                leftover_players.push_str(&format!(", {}", players.get(player_num).unwrap().name));
+            }
+        };
+
+
         s.push_str(&format!("         {}\n", team_names));
         s.push_str(&format!("         {}\n", team_sr_averages));
         s.push_str(&format!("Tank:    {}\n", tank_line_1));
@@ -272,6 +293,9 @@ impl Matchup {
         s.push_str(&format!("Support: {}\n", support_line_2));
 
         s.push_str("-------------------------------------\n");
+        s.push_str(&leftover_players);
+        
+        s.push_str("\n=====================================\n");
 
         s
     }

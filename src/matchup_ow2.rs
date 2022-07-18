@@ -18,6 +18,7 @@ pub struct OW2Matchup {
     pub standard_deviations: [f32; 3],
     pub average_deviations: [f32; 3],
     pub rating: i16,
+    pub players_left_over: Vec<u8>,
 }
 
 impl OW2Matchup {
@@ -61,15 +62,23 @@ impl OW2Matchup {
         let mut full_role_average: [f32; 3] = [0.0; 3];
         let mut standard_deviations: [f32; 3] = [0.0; 3];
         let mut average_deviations: [f32; 3] = [0.0; 3];
-        let mut team_average_sr: f32 = 0.0;
+        let scrim_average_sr: f32;
+        let mut team_srs: Vec<f32> = Vec::new();
 
         let position_vec = vec![Position::Tank, Position::Damage, Position::Support];
 
         for team in &created_teams {
             let team_sr = team.get_average_sr();
-            team_average_sr += team_sr;
+            team_srs.push(team_sr);
         }
-        team_average_sr /= number_of_teams;
+        scrim_average_sr = team_srs.iter().sum::<f32>() / number_of_teams;
+
+        let average_variance = team_srs
+            .iter()
+            .map(|x| (x - scrim_average_sr).powi(2))
+            .sum::<f32>()
+            / number_of_teams;
+        let sr_average_deviation = average_variance.sqrt();
 
         let mut sum_of_all_dev_diffs: f32 = 0.0;
         let mut sum_of_all_avg_diffs: f32 = 0.0;
@@ -97,16 +106,18 @@ impl OW2Matchup {
             }
         }
 
-        let rating = (sum_of_all_dev_diffs + sum_of_all_avg_diffs) as i16;
+        // let rating = (sum_of_all_dev_diffs + sr_average_deviation) as i16;
+        let rating = (sum_of_all_dev_diffs + sum_of_all_avg_diffs*5.0) as i16;
 
         OW2Matchup {
             kind,
             extended_teams,
-            sr_average: team_average_sr,
+            sr_average: scrim_average_sr,
             full_role_average,
             standard_deviations,
             average_deviations,
             rating,
+            players_left_over: Vec::new(),
         }
     }
 
@@ -251,6 +262,26 @@ impl OW2Matchup {
             );
         }
 
+        let mut leftover_players = String::new();
+
+        if self.players_left_over.len() == 0 {
+            leftover_players.push_str("No players are left out");
+        }
+        else{
+            leftover_players.push_str(&format!("Leftover players: {}", players.get(self.players_left_over.first().unwrap()).unwrap().name));
+            
+            let mut skipped = false;
+            for player_num in &self.players_left_over {
+                if !skipped { 
+                    skipped = true;
+                    continue;
+                };
+                leftover_players.push_str(&format!(", {}", players.get(player_num).unwrap().name));
+            }
+        };
+
+
+
         s.push_str(&format!("         {}\n", team_names));
         s.push_str(&format!("         {}\n", team_sr_averages));
         s.push_str(&format!("Tank:    {}\n", tank_line));
@@ -260,6 +291,9 @@ impl OW2Matchup {
         s.push_str(&format!("Support: {}\n", support_line_2));
 
         s.push_str("-------------------------------------\n");
+        s.push_str(&leftover_players);
+        
+        s.push_str("\n=====================================\n");
 
         s
     }
