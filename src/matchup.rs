@@ -100,7 +100,7 @@ impl Matchup {
             }
         }
 
-        let rating = (sum_of_all_dev_diffs + sum_of_all_avg_diffs*5.0) as i16;
+        let rating = (sum_of_all_dev_diffs * 2.0 + sum_of_all_avg_diffs*5.0) as i16;
 
         Matchup {
             kind,

@@ -1,150 +1,170 @@
 SCRIM A:
 -------------------------------------
 Matchup
-Average SR: 2343.4446
-Rating: 1219
+Average SR: 2543.1665
+Rating: 3068
 
-                  Naughty Tomatoes                   Team 2                   Team 3
-                           2416.67                  2308.17                  2305.50
-Tank:            HiddenSquid: 1600            doushte: 1347            freaker: 2400
-Tank:              Stormeair: 2200             PhilvP: 2127               Fool: 1700
-DPS:                   LazaC: 2400           TrixCold: 3300           michealw: 3260
-DPS:                 taadels: 3600            DominiC: 2375        SharkyShark: 2173
-Support:             Altofox: 2500           MPSenpai: 2200            Strawie: 2000
-Support:                Juun: 2200         DragonEyes: 2500              Luhcy: 2300
+                    Fighting Foxes          Dancing Dragons
+                           2533.33                  2553.00
+Tank:                KingBoo: 2600             Edgers: 2900
+Tank:               TrixCold: 3300          Eyoldaith: 3300
+DPS:                NootNoot: 3000           michealw: 3368
+DPS:                 freaker: 2300            Starboy: 1800
+Support:             Siruker: 1500               Fool: 1400
+Support:                Juun: 2500          Hardsider: 2550
 -------------------------------------
+No players are left out
+=====================================
 SCRIM B:
 -------------------------------------
 Matchup
-Average SR: 2343.4446
-Rating: 1219
+Average SR: 2543.1665
+Rating: 3068
 
-                  Naughty Tomatoes                   Team 2                   Team 3
-                           2416.67                  2241.50                  2372.17
-Tank:            HiddenSquid: 1600            doushte: 1347            freaker: 2400
-Tank:              Stormeair: 2200             PhilvP: 2127               Fool: 1700
-DPS:                   LazaC: 2400           TrixCold: 3300           michealw: 3260
-DPS:                 taadels: 3600            DominiC: 2375        SharkyShark: 2173
-Support:             Altofox: 2500            Strawie: 2000           MPSenpai: 2200
-Support:                Juun: 2200              Luhcy: 2300         DragonEyes: 2500
+                    Fighting Foxes          Dancing Dragons
+                           2525.00                  2561.33
+Tank:                KingBoo: 2600             Edgers: 2900
+Tank:               TrixCold: 3300          Eyoldaith: 3300
+DPS:                NootNoot: 3000           michealw: 3368
+DPS:                 freaker: 2300            Starboy: 1800
+Support:                Fool: 1400            Siruker: 1500
+Support:           Hardsider: 2550               Juun: 2500
 -------------------------------------
+No players are left out
+=====================================
 SCRIM C:
 -------------------------------------
 Matchup
-Average SR: 2343.4446
-Rating: 1219
+Average SR: 2543.1665
+Rating: 3068
 
-                  Naughty Tomatoes                   Team 2                   Team 3
-                           2416.67                  2308.17                  2305.50
-Tank:            HiddenSquid: 1600            doushte: 1347            freaker: 2400
-Tank:              Stormeair: 2200             PhilvP: 2127               Fool: 1700
-DPS:                   LazaC: 2400           TrixCold: 3300           michealw: 3260
-DPS:                 taadels: 3600            DominiC: 2375        SharkyShark: 2173
-Support:            MPSenpai: 2200            Altofox: 2500            Strawie: 2000
-Support:          DragonEyes: 2500               Juun: 2200              Luhcy: 2300
+                    Fighting Foxes          Dancing Dragons
+                           2511.33                  2575.00
+Tank:                KingBoo: 2600             Edgers: 2900
+Tank:               TrixCold: 3300          Eyoldaith: 3300
+DPS:                michealw: 3368           NootNoot: 3000
+DPS:                 Starboy: 1800            freaker: 2300
+Support:             Siruker: 1500               Fool: 1400
+Support:                Juun: 2500          Hardsider: 2550
 -------------------------------------
+No players are left out
+=====================================
 SCRIM D:
 -------------------------------------
 Matchup
-Average SR: 2343.4446
-Rating: 1219
+Average SR: 2543.1665
+Rating: 3068
 
-                  Naughty Tomatoes                   Team 2                   Team 3
-                           2416.67                  2241.50                  2372.17
-Tank:            HiddenSquid: 1600            doushte: 1347            freaker: 2400
-Tank:              Stormeair: 2200             PhilvP: 2127               Fool: 1700
-DPS:                   LazaC: 2400           TrixCold: 3300           michealw: 3260
-DPS:                 taadels: 3600            DominiC: 2375        SharkyShark: 2173
-Support:            MPSenpai: 2200            Strawie: 2000            Altofox: 2500
-Support:          DragonEyes: 2500              Luhcy: 2300               Juun: 2200
+                    Fighting Foxes          Dancing Dragons
+                           2503.00                  2583.33
+Tank:                KingBoo: 2600             Edgers: 2900
+Tank:               TrixCold: 3300          Eyoldaith: 3300
+DPS:                michealw: 3368           NootNoot: 3000
+DPS:                 Starboy: 1800            freaker: 2300
+Support:                Fool: 1400            Siruker: 1500
+Support:           Hardsider: 2550               Juun: 2500
 -------------------------------------
+No players are left out
+=====================================
 SCRIM E:
 -------------------------------------
 Matchup
-Average SR: 2343.4446
-Rating: 1219
+Average SR: 2543.1665
+Rating: 3068
 
-                  Naughty Tomatoes                   Team 2                   Team 3
-                           2350.00                  2308.17                  2372.17
-Tank:            HiddenSquid: 1600            doushte: 1347            freaker: 2400
-Tank:              Stormeair: 2200             PhilvP: 2127               Fool: 1700
-DPS:                   LazaC: 2400           TrixCold: 3300           michealw: 3260
-DPS:                 taadels: 3600            DominiC: 2375        SharkyShark: 2173
-Support:             Strawie: 2000            Altofox: 2500           MPSenpai: 2200
-Support:               Luhcy: 2300               Juun: 2200         DragonEyes: 2500
+                    Fighting Foxes          Dancing Dragons
+                           2533.33                  2553.00
+Tank:                KingBoo: 2600             Edgers: 2900
+Tank:              Eyoldaith: 3300           TrixCold: 3300
+DPS:                NootNoot: 3000           michealw: 3368
+DPS:                 freaker: 2300            Starboy: 1800
+Support:             Siruker: 1500               Fool: 1400
+Support:                Juun: 2500          Hardsider: 2550
 -------------------------------------
+No players are left out
+=====================================
 SCRIM F:
 -------------------------------------
 Matchup
-Average SR: 2343.4446
-Rating: 1219
+Average SR: 2543.1665
+Rating: 3068
 
-                  Naughty Tomatoes                   Team 2                   Team 3
-                           2350.00                  2308.17                  2372.17
-Tank:            HiddenSquid: 1600            doushte: 1347            freaker: 2400
-Tank:              Stormeair: 2200             PhilvP: 2127               Fool: 1700
-DPS:                   LazaC: 2400           TrixCold: 3300           michealw: 3260
-DPS:                 taadels: 3600            DominiC: 2375        SharkyShark: 2173
-Support:             Strawie: 2000           MPSenpai: 2200            Altofox: 2500
-Support:               Luhcy: 2300         DragonEyes: 2500               Juun: 2200
+                    Fighting Foxes          Dancing Dragons
+                           2525.00                  2561.33
+Tank:                KingBoo: 2600             Edgers: 2900
+Tank:              Eyoldaith: 3300           TrixCold: 3300
+DPS:                NootNoot: 3000           michealw: 3368
+DPS:                 freaker: 2300            Starboy: 1800
+Support:                Fool: 1400            Siruker: 1500
+Support:           Hardsider: 2550               Juun: 2500
 -------------------------------------
+No players are left out
+=====================================
 SCRIM G:
 -------------------------------------
 Matchup
-Average SR: 2343.4443
-Rating: 1219
+Average SR: 2543.1665
+Rating: 3068
 
-                  Naughty Tomatoes                   Team 2                   Team 3
-                           2416.67                  2267.83                  2345.83
-Tank:            HiddenSquid: 1600            doushte: 1347            freaker: 2400
-Tank:              Stormeair: 2200             PhilvP: 2127               Fool: 1700
-DPS:                   LazaC: 2400           michealw: 3260           TrixCold: 3300
-DPS:                 taadels: 3600        SharkyShark: 2173            DominiC: 2375
-Support:             Altofox: 2500           MPSenpai: 2200            Strawie: 2000
-Support:                Juun: 2200         DragonEyes: 2500              Luhcy: 2300
+                    Fighting Foxes          Dancing Dragons
+                           2511.33                  2575.00
+Tank:                KingBoo: 2600             Edgers: 2900
+Tank:              Eyoldaith: 3300           TrixCold: 3300
+DPS:                michealw: 3368           NootNoot: 3000
+DPS:                 Starboy: 1800            freaker: 2300
+Support:             Siruker: 1500               Fool: 1400
+Support:                Juun: 2500          Hardsider: 2550
 -------------------------------------
+No players are left out
+=====================================
 SCRIM H:
 -------------------------------------
 Matchup
-Average SR: 2343.4446
-Rating: 1219
+Average SR: 2543.1665
+Rating: 3068
 
-                  Naughty Tomatoes                   Team 2                   Team 3
-                           2416.67                  2201.17                  2412.50
-Tank:            HiddenSquid: 1600            doushte: 1347            freaker: 2400
-Tank:              Stormeair: 2200             PhilvP: 2127               Fool: 1700
-DPS:                   LazaC: 2400           michealw: 3260           TrixCold: 3300
-DPS:                 taadels: 3600        SharkyShark: 2173            DominiC: 2375
-Support:             Altofox: 2500            Strawie: 2000           MPSenpai: 2200
-Support:                Juun: 2200              Luhcy: 2300         DragonEyes: 2500
+                    Fighting Foxes          Dancing Dragons
+                           2503.00                  2583.33
+Tank:                KingBoo: 2600             Edgers: 2900
+Tank:              Eyoldaith: 3300           TrixCold: 3300
+DPS:                michealw: 3368           NootNoot: 3000
+DPS:                 Starboy: 1800            freaker: 2300
+Support:                Fool: 1400            Siruker: 1500
+Support:           Hardsider: 2550               Juun: 2500
 -------------------------------------
+No players are left out
+=====================================
 SCRIM I:
 -------------------------------------
 Matchup
-Average SR: 2343.4443
-Rating: 1219
+Average SR: 2543.1667
+Rating: 3177
 
-                  Naughty Tomatoes                   Team 2                   Team 3
-                           2416.67                  2267.83                  2345.83
-Tank:            HiddenSquid: 1600            doushte: 1347            freaker: 2400
-Tank:              Stormeair: 2200             PhilvP: 2127               Fool: 1700
-DPS:                   LazaC: 2400           michealw: 3260           TrixCold: 3300
-DPS:                 taadels: 3600        SharkyShark: 2173            DominiC: 2375
-Support:            MPSenpai: 2200            Altofox: 2500            Strawie: 2000
-Support:          DragonEyes: 2500               Juun: 2200              Luhcy: 2300
+                    Fighting Foxes          Dancing Dragons
+                           2541.67                  2544.67
+Tank:                KingBoo: 2600             Edgers: 2900
+Tank:               TrixCold: 3300          Eyoldaith: 3300
+DPS:                NootNoot: 3000           michealw: 3368
+DPS:                 freaker: 2300            Starboy: 1800
+Support:             Siruker: 1500               Fool: 1400
+Support:           Hardsider: 2550               Juun: 2500
 -------------------------------------
+No players are left out
+=====================================
 SCRIM J:
 -------------------------------------
 Matchup
-Average SR: 2343.4446
-Rating: 1219
+Average SR: 2543.1667
+Rating: 3177
 
-                  Naughty Tomatoes                   Team 2                   Team 3
-                           2416.67                  2201.17                  2412.50
-Tank:            HiddenSquid: 1600            doushte: 1347            freaker: 2400
-Tank:              Stormeair: 2200             PhilvP: 2127               Fool: 1700
-DPS:                   LazaC: 2400           michealw: 3260           TrixCold: 3300
-DPS:                 taadels: 3600        SharkyShark: 2173            DominiC: 2375
-Support:            MPSenpai: 2200            Strawie: 2000            Altofox: 2500
-Support:          DragonEyes: 2500              Luhcy: 2300               Juun: 2200
+                    Fighting Foxes          Dancing Dragons
+                           2516.67                  2569.67
+Tank:                KingBoo: 2600             Edgers: 2900
+Tank:               TrixCold: 3300          Eyoldaith: 3300
+DPS:                NootNoot: 3000           michealw: 3368
+DPS:                 freaker: 2300            Starboy: 1800
+Support:                Fool: 1400            Siruker: 1500
+Support:                Juun: 2500          Hardsider: 2550
 -------------------------------------
+No players are left out
+=====================================

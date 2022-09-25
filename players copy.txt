@@ -1,0 +1,29 @@
+# Tank
+PhilvP - 2127 - 1800 - 2200 - t
+DominiC - 2525 - 2375 - 2930 - t
+Larax - 1700 - 2200 - 2000 - t
+SBDD - 3500 - 3223 - 3350 - t
+Toburbiron - 3000 - 3000 - 0 - t
+# DPS
+KingBoo - 2200 - 2200 - 2200 - d
+Kroma - 3150 - 3150 - 0 - d
+NootNoot - 3000 - 3000 - 0 - d
+Starboy - 0 - 1340 - 0 - d
+ParagoNmk - 3900 - 3900 - 3900 - d - d
+# Support
+Chowderr - 0 - 0 - 2700 - s
+Strawie - 0 - 0 - 2000 - s
+Siruker - 0 - 0 - 1500 - s
+SharkyShark - 2055 - 2173 - 2379 - s
+WarGamer - 0 - 0 - 2600 - s - s
+Yaquu - 0 - 0 - 3500 - s - s
+# Flex
+LazaC - 2900 - 2400 - 2900 - ds
+Flowenol - 2307 - 2350 - 2087 - ds
+HiddenSquid - 1600 - 1400 - 1400 - ds
+Lusodoc - 0 - 1800 - 1800 - ds
+taadels - 3900 - 3600 - 3600 - ds
+michealw - 3224 - 3260 - 3450 - d
+Nebster - 2800 - 2800 - 3100 - d
+NulIity - 2895 - 2600 - 3014 - d
+GoSu - 2800 - 3100 - 2600 - d

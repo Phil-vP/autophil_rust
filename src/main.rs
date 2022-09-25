@@ -35,7 +35,7 @@ use std::iter::FromIterator;
 fn main() {
     let player_map: HashMap<u8, Player> = read_players();
 
-    let ow_2 = true;
+    let ow_2 = false;
 
     let number_of_printed_scrims = 10;
 
@@ -550,6 +550,8 @@ fn create_ow2_scrims(
     team_permutations: Vec<Vec<Vec<usize>>>
 ) -> Vec<OW2Matchup> {
     let scrims: Vec<Vec<OW2Matchup>> = Vec::new();
+    
+    let all_player_vec: Vec<u8> = players_raw.keys().cloned().collect();
 
     println!("{:?}", team_names_raw);
 
@@ -574,6 +576,7 @@ fn create_ow2_scrims(
     for matchup_chunk in matchup_chunks.into_iter() {
         let matchup_chunk: Vec<(Vec<u8>, Vec<(u8, u8)>, Vec<(u8, u8)>)> = matchup_chunk.collect();
 
+        let all_player_set: HashSet<u8> = HashSet::from_iter(all_player_vec.clone().into_iter());
         let cloned_arc = Arc::clone(&arc);
         let players = players_raw.clone();
         let team_names = team_names_raw.clone();
@@ -606,9 +609,35 @@ fn create_ow2_scrims(
                                 support_vec.get(supp_perm[i]).unwrap().1,
                             ));
                         }
+                        
+                        let mut players_playing: Vec<u8> = Vec::new();
+                        let m_clone = matchup_teams.clone();
+                        
+                        for m_team in m_clone {
+                            players_playing.push(m_team.1);
+                            players_playing.push(m_team.2);
+                            players_playing.push(m_team.3);
+                            players_playing.push(m_team.4);
+                            players_playing.push(m_team.5);
+                        }
+                        
+                        // println!("all_player_set: {:?}", all_player_set);
+                    
+                        let playing_players_set: HashSet<u8> = HashSet::from_iter(players_playing.into_iter());
+                        // println!("playing_players_set: {:?}", playing_players_set);
+
+                        let players_on_bench: HashSet<_> = all_player_set.difference(&playing_players_set).collect();
+                        // println!("players_on_bench: {:?}", players_on_bench);
+                        // println!();
+
+                        let players_left_over_vec: Vec<_> = players_on_bench.into_iter().cloned().collect();
+
                         if number_of_teams <= 3 {
-                            let matchup = OW2Matchup::new(matchup_teams, &players);
+                            let mut matchup = OW2Matchup::new(matchup_teams, &players);
                             let rating = matchup.rating;
+
+                            matchup.players_left_over = players_left_over_vec;
+
                             if rating < (best_rating as f32) as i16 {
                                 all_scrims.push(matchup);
                                 best_rating = cmp::min(rating, best_rating);
@@ -624,7 +653,9 @@ fn create_ow2_scrims(
                                         this_matchup_teams.push(matchup_teams[*i-1].clone());
                                         this_permutation_matchups.push(matchup_teams[*i-1].clone());
                                     }
-                                    let matchup = OW2Matchup::new(this_matchup_teams, &players);
+                                    let mut matchup = OW2Matchup::new(this_matchup_teams, &players);
+
+                                    matchup.players_left_over = players_left_over_vec.clone();
                                     rating += matchup.rating;
                                 }
                                 if rating < (best_rating as f32) as i16 {
